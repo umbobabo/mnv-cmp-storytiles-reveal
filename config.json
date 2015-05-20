@@ -1,5 +1,4 @@
-var ecStoryTilesRevealConfig = {
- "config" : {
+{
   "bundle": {
     "assets": { 
       "version": "theWorldIf2015001",
@@ -13,20 +12,4 @@ var ecStoryTilesRevealConfig = {
       "provider": "inbundle"
     }
   }
-},
- "minerva" :{
-  "name": "StoryTilesReveal",
-  "ns": {
-    "js": "ecStoryTilesReveal",
-    "css": "ec-storytilesreveal",
-    "folder": "ec-storytilesreveal"
-  },
-  "description": "",
-  "version": "0.1.0",
-  "debugMode": true,
-  "private": true,
-  "engines": {
-    "node": ">=0.8.0"
-  }
 }
- };
