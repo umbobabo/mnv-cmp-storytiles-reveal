@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       BundleVariation: {
         files: ['config.json'],
         tasks: ['BundleVariation']
-      }       
+      }
     },
     concat: {
       dist: {
@@ -54,13 +54,27 @@ module.exports = function(grunt) {
         dest: 'dist/js/init.min.js',
       },
       template: {
-        src: ['css/inlineStyle.html', 'js/tpl/handlebars/*.*'],
-        dest: 'dist/<%= pkg.ns.folder %>-complete.handlebars',
+        src: ['tmp/inlineStyle.html', 'js/tpl/handlebars/*.*'],
+        dest: 'dist/tpl/complete.handlebars',
       },
       css: {
         src: ['../../pattern-library/css/components.css', '../../pattern-library/css/app.css', '../../pattern-library/css/fonts.css', '../../pattern-library/css/social-icons.css', 'css/style.css'],
         dest: 'tmp/concat-critical.css',
       }
+    },
+    copy: {
+      template: {
+        files: [
+          {
+            src: 'js/tpl/handlebars/<%= pkg.ns.folder %>.handlebars',
+            dest: 'dist/tpl/html.handlebars'
+          },
+          {
+            src: 'css/style.css',
+            dest: 'dist/css/style.css'
+          }
+        ]
+      },
     },
     uglify: {
       options: {
@@ -164,7 +178,7 @@ module.exports = function(grunt) {
       target: ['dist/js/init.min.js']
     },
     inlineCSS: {
-      target: ['dist/critical.css']
+      target: ['css/style.css']
     },
     KeepConfigAligned: {
       //TODO review this part with dest and src
@@ -250,7 +264,7 @@ module.exports = function(grunt) {
 
   // Inline CSS
   // Put the css style inside a tag <style><style>
-  grunt.registerMultiTask('inlineCSS', 'Creating an inline style tag with css insider', function() {
+  grunt.registerMultiTask('inlineCSS', 'Creating an inline style tag with css inside', function() {
     var target = this.data[0];
 
     grunt.log.writeln("Starting file reading " + target + "...");
@@ -265,7 +279,7 @@ module.exports = function(grunt) {
     //grunt.log.writeln(initMin);
     
     try {
-        fs.writeFileSync('css/inlineStyle.html', '<style>' + initMin + '</style>');
+        fs.writeFileSync('tmp/inlineStyle.html', '<style>' + initMin + '</style>');
     } catch (err) {
         grunt.log.writeln("An error occured on saving file:" + err);
         return false;
@@ -437,7 +451,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-criticalcss');
-
   // Compile sass and handlebars on the fly.
   grunt.registerTask('default', ['sass:dev', 'handlebars', 'BundleVariation', 'KeepConfigAligned',  'KeepDataAligned', 'browserSync', 'watch']);
 
@@ -454,7 +467,7 @@ module.exports = function(grunt) {
   // Run this task when the code is ready for production.
   grunt.registerTask('production', ['sass:dist',  'csstojs', 'useminPrepare', 'concat', 'concat:dist', 'uglify', 'robFix']);
   //'criticalcss:custom',
-  grunt.registerTask('template', [ 'inlineCSS', 'concat:template']);
+  grunt.registerTask('template', [ 'copy:template', 'inlineCSS', 'concat:template']);
   //Get the critical css for the widget
   grunt.registerTask('csscritical', ['concat:css', 'criticalcss:custom']);
 };
