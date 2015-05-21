@@ -1,3 +1,308 @@
-body {
-  background: red;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.mnv-ec-storytilesreveal {
+  height: 100%;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.main-container {
+  position: relative;
+  border: 1px solid green;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.depth-top {
+  z-index: 1000;
+}
+
+.depth-bottom {
+  z-index: 1;
+}
+
+.active {
+  visibility: visible !important;
+  overflow-y: scroll !important;
+}
+
+.inactive {
+  visibility: hidden !important;
+  overflow: hidden !important;
+}
+
+.article-reveal-container {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition-delay: 0s, 0.5s, 1s, 1.5s;
+  transform: translate(0%, 0%);
+  perspective: 4000px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.article-container {
+  max-width: 1220px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid blue;
+  margin: 0 auto;
+  padding: 40px;
+  overflow-y: scroll;
+}
+
+.artical-reveal-tile {
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  flex : 1 1 10em;
+  height: 280px;
+  min-width: 550px;
+  background-color: rgba(255, 0 , 0, 0.5);
+  opacity: 1;
+  overflow: hidden;
+
+
+  .title, .rubrik {
+    z-index: 1;
+    font-size: 30px;
+    color:  #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+  .rubrik {
+    font-size: 20px;
+    top: 65%;
+  }
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .artical-reveal-tile { 
+    height: 150px;
+    min-width: 250px;
+  }
+}
+
+.animate {
+  transform: translateZ(50em);
+  /*transform: translateX(-500em);*/
+  /*  transform: translateY(-5em);*/
+  /*  transform: scale(2);*/
+  opacity: 0;
+}
+
+
+.tile01 {
+  // transition-delay: 0s;
+  flex : 2 2 20em;
+  // background: url("http://lorempixel.com/600/800/cats");
+  // background-repeat: no-repeat;
+  // background-size: 100%;
+}
+
+// .tile02 {
+//   transition-delay: 0.1s;
+//   background: url("http://lorempixel.com/600/800/people");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile03 {
+//   /*transition-delay: 0.2s;*/
+//   background: url("http://lorempixel.com/600/800/animal");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile04 {
+//   /*transition-delay: 0.3s;*/
+//   flex : 2 2 20em;
+//   background: url("http://lorempixel.com/600/800/city");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile05 {
+//   /*transition-delay: 0.4s;*/
+//   background: url("http://lorempixel.com/600/800/business");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile06 {
+//   /*transition-delay: 0.5s;*/
+//   background: url("http://lorempixel.com/600/800/food");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile07 {
+//   /*transition-delay: 0.6s;*/
+//   background: url("http://lorempixel.com/600/800/nightlife");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile08 {
+//   /*transition-delay: 0.6s;*/
+//   background: url("http://lorempixel.com/600/800/fashion");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile08 {
+//   /*transition-delay: 0.6s;*/
+//   flex : 2 2 20em;
+//   background: url("http://lorempixel.com/600/800/nature");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile09 {
+//   /*transition-delay: 0.7s;*/
+//   background: url("http://lorempixel.com/600/800/sports");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile10 {
+//   /*transition-delay: 0.8s;*/
+//   background: url("http://lorempixel.com/600/800/technics");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile11 {
+//   /*transition-delay: 0.9s;*/
+//   background: url("http://lorempixel.com/600/800/transport");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile12 {
+//   /*transition-delay: 1s;*/
+//   flex : 2 2 20em;
+//   background: url("http://lorempixel.com/600/800/cats");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile13 {
+//   /*transition-delay: 1.1s;*/
+//   background: url("http://lorempixel.com/600/800/people");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile14 {
+//   /*transition-delay: 1.2s;*/
+//   background: url("http://lorempixel.com/600/800/animal");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile15 {
+//   /*transition-delay: 1.3s;*/
+//   background: url("http://lorempixel.com/600/800/city");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+// .tile16 {
+//   /*transition-delay: 1.4s;*/
+//   background: url("http://lorempixel.com/600/800/food");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }
+
+
+
+button {
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index:  1000;
+  background: LightSeaGreen;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+}
+
+.close-btn {
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 50px;
+  color: rgba(0, 0, 0, 0.6);
+  z-index: 9999999999999;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  font-size: 30px;
+  /*background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20enco…2C1.1l6.5-6.5l6.5%2C6.5l1-1.1l-6.5-6.5%20L27.7%2C14z%22%2F%3E%3C%2Fsvg%3E');
+  /* background-repeat: no-repeat; */
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  text-align: center;
+}
+
+
+.close-btn:hover {
+  cursor: pointer;
+  background-color: #fff;
 }
