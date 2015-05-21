@@ -66,21 +66,6 @@
         "title": "tile13",
         "rubrik": "tile rubrik",
         "image" : "http://lorempixel.com/600/300/transport"
-      },
-      {
-        "title": "tile14",
-        "rubrik": "tile rubrik",
-        "image" : "http://lorempixel.com/600/300/food"
-      },
-      {
-        "title": "tile15",
-        "rubrik": "tile rubrik",
-        "image" : "http://lorempixel.com/600/300/fashion"
-      },
-      {
-        "title": "tile16",
-        "rubrik": "tile rubrik",
-        "image" : "http://lorempixel.com/600/300/nature"
       }
     ]
   }
