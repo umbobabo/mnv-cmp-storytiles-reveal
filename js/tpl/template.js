@@ -5,7 +5,11 @@ templates['ec-storytilesreveal'] = template({"1":function(depth0,helpers,partial
 
   return "      <li class=\"artical-reveal-tile "
     + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\">\n        <div class=\"tile-content\">\n          <h2 class=\"title\">"
+    + " "
+    + alias3(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"type","hash":{},"data":data}) : helper)))
+    + "\">\n        <div class=\"tile-content\">\n          <h2 class=\"section\">"
+    + alias3(((helper = (helper = helpers.section || (depth0 != null ? depth0.section : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"section","hash":{},"data":data}) : helper)))
+    + "</h2>\n          <h2 class=\"title\">"
     + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h2>\n          <h2 class=\"rubrik\">"
     + alias3(((helper = (helper = helpers.rubrik || (depth0 != null ? depth0.rubrik : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"rubrik","hash":{},"data":data}) : helper)))

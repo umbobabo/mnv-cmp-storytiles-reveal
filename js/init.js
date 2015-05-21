@@ -17,9 +17,6 @@ $(document).ready(function(){
 
 
 
-$(document).ready(function(){
-  console.log('were ready');
-
 
 
   var articleActive, revealContainer = document.getElementsByClassName('article-reveal-container'), btn = document.getElementsByClassName('close-btn'), tile = document.getElementsByClassName('artical-reveal-tile'), 
@@ -38,11 +35,11 @@ $(document).ready(function(){
 
 
 
-  function resetTransitionDelay() {
-    for (var i = 0; i <= totalOfVals; i++) {
-    $( ".artical-reveal-tile:eq(" + [i] + ")" ).css( "transition-delay", (0.0) + "s" );
+    function resetTransitionDelay() {
+      for (var i = 0; i <= totalOfVals; i++) {
+      $( ".artical-reveal-tile:eq(" + [i] + ")" ).css( "transition-delay", (0.0) + "s" );
+    }
   }
-}
 
 
   function detectTheEnd(e) {
@@ -74,17 +71,17 @@ $(document).ready(function(){
 
 
 
-  function triggerReverse(){
-   for (var i = 0; i <= revNumber.length; i++) {
-    $( ".artical-reveal-tile:eq(" + revNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.2 *i) + "s" );
+    function triggerReverse(){
+     for (var i = 0; i <= revNumber.length; i++) {
+      $( ".artical-reveal-tile:eq(" + revNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.2 *i) + "s" );
+    }
   }
-}
 
-  function triggerForwards(){
-     for (var i = 0; i <= forNumber.length; i++) {
-    $( ".artical-reveal-tile:eq(" + forNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.2 *i) + "s" );
+    function triggerForwards(){
+       for (var i = 0; i <= forNumber.length; i++) {
+      $( ".artical-reveal-tile:eq(" + forNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.2 *i) + "s" );
+    }
   }
-}
 
 
 
@@ -165,13 +162,7 @@ $(document).ready(function(){
 
     articleActive = !articleActive;
 
-
-
   });
-});
-
-
-
 
 
 
