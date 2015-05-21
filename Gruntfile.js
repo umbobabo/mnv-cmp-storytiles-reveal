@@ -424,7 +424,19 @@ module.exports = function(grunt) {
 
 
 
-  grunt.loadNpmTasks('grunt-collection');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-githooks');
+  grunt.loadNpmTasks('grunt-handlebars-compiler');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-usemin');
+  grunt.loadNpmTasks('grunt-criticalcss');
 
   // Compile sass and handlebars on the fly.
   grunt.registerTask('default', ['sass:dev', 'handlebars', 'BundleVariation', 'KeepConfigAligned',  'KeepDataAligned', 'browserSync', 'watch']);
