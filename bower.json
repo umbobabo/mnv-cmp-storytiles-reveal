@@ -5,18 +5,20 @@
   "authors": [
     "Umberto Babini <umbertobabini@economist.com>"
   ],
-  "description": "Provide a pure JS livesearch field",
+  "description": "Provide a grid with revealing effect",
   "main": [
-    "./dist/css/style.css",
-    "./dist/js/mnv-cmp-storytilesreveal.min.js",
-    ".dist/js/mnv-cmp-storytilesreveal.js"
+    "./dist/js/init.min.js",
   ],
   "license": "MIT",
   "ignore": [
+    "bower_components/",
+    "css/",
+    "data/",
     "js/",
-    "minerva-ws/",
     "node_modules/",
     "partials/",
+    "sites/",
+    "tmp/",
     "views/",
     ".gitignore",
     "bower.json",
@@ -25,7 +27,7 @@
     "minerva-ws.js",
     "package.json"
   ],
-  "dependencies": {
+  "devDependencies": {
     "mnv-shared": "*",
     "handlebars": "~3.0.3"
   }
