@@ -1,16 +1,18 @@
 @font-face {
-  font-family: 'NeutraText-Bold';
-  src: url('../fonts/NeutraText-Bold.eot');
-  src: url('../fonts/NeutraText-Bold.eot') format('embedded-opentype'), url('../fonts/NeutraText-Bold.woff') format('woff'), url('../fonts/NeutraText-Bold.ttf') format('truetype'), url('../fonts/NeutraText-Bold.svg#NeutraText-Bold') format('svg');
-  font-weight: normal;
-  font-style: normal; }
+  font-family: Neutra2-Medium;
+  src: url("../fonts/Neutraface2Display-Medium.otf") format("opentype"); }
 
 @font-face {
-  font-family: 'NeutraText-Book';
-  src: url('../fonts/NeutraText-Book.eot');
-  src: url('../fonts/NeutraText-Book.eot') format('embedded-opentype'), url('../fonts/NeutraText-Book.woff') format('woff'), url('../fonts/NeutraText-Book.ttf') format('truetype'), url('../fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
-  font-weight: normal;
-  font-style: normal; }
+  font-family: Neutra2-Bold;
+  src: url("../fonts/Neutraface2Display-Bold.otf") format("opentype"); }
+
+@font-face {
+  font-family: Neutra2-Titling;
+  src: url("../fonts/Neutraface2Display-Titling.ttf") format("opentype"); }
+
+@font-face {
+  font-family: Neutra2-Light;
+  src: url("../fonts/Neutraface2Display-Light.otf") format("opentype"); }
 
 html, body {
   width: 100%;
@@ -22,7 +24,7 @@ html, body {
 
 .mnv-ec-storytilesreveal {
   height: 100%;
-  font-family: NeutraText-Book; }
+  font-family: Neutra2-Medium; }
 
 ul, li {
   list-style: none;
@@ -60,7 +62,6 @@ html {
   top: 0;
   width: 100%;
   height: 100%;
-  transition-delay: 0s, 0.5s, 1s, 1.5s;
   transform: translate(0%, 0%);
   perspective: 4000px;
   overflow-y: scroll;
@@ -92,11 +93,12 @@ ul {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   flex: 1;
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: black;
   border-bottom: 4px solid #000;
   opacity: 1;
   overflow: hidden; }
   .artical-reveal-tile .section, .artical-reveal-tile .title, .artical-reveal-tile .rubrik {
+    pointer-events: none;
     z-index: 2;
     font-size: 20px;
     color: #25E3D0;
@@ -110,16 +112,16 @@ ul {
       .artical-reveal-tile .section, .artical-reveal-tile .title, .artical-reveal-tile .rubrik {
         font-size: 20px; } }
   .artical-reveal-tile .title {
-    top: 40px;
-    font-size: 32px;
-    font-family: NeutraText-Bold;
+    top: 45px;
+    font-size: 36px;
+    font-family: Neutra2-Titling;
     color: #fff; }
     @media (max-width: 480px) {
       .artical-reveal-tile .title {
         top: 40px;
         font-size: 30px; } }
   .artical-reveal-tile .rubrik {
-    font-size: 16px;
+    font-size: 20px;
     top: 90px;
     text-transform: initial;
     color: #fff; }
@@ -128,7 +130,14 @@ ul {
     top: 0;
     left: 0;
     width: 100%;
-    height: auto; }
+    height: auto;
+    -webkit-transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out; }
+
+.image:hover {
+  transform: scale(1.2, 1.2); }
 
 .cover {
   position: relative;
@@ -160,6 +169,7 @@ ul {
     right: 0;
     bottom: 0; }
   .full .image-grad {
+    pointer-events: none;
     width: 100%;
     height: 100%;
     background: -moz-linear-gradient(left, black 0%, rgba(0, 0, 0, 0) 100%);
@@ -184,6 +194,7 @@ ul {
 
 .quarter {
   min-width: 25%;
+  border-right: 6px solid #000;
   position: relative; }
   .quarter:before {
     display: block;
@@ -205,8 +216,7 @@ ul {
   .quarter .section, .quarter .rubrik {
     display: none; }
   .quarter .image-tint-red, .quarter .image-tint-green {
-    -webkit-filter: grayscale;
-    filter: grayscale;
+    pointer-events: none;
     position: absolute;
     top: 0;
     width: 100%;
@@ -215,6 +225,12 @@ ul {
     background-color: rgba(255, 0, 0, 0.3); }
   .quarter .image-tint-green {
     background-color: rgba(40, 130, 30, 0.3); }
+
+.quarter:nth-child(7) {
+  border-right: 0; }
+
+.quarter:nth-child(13) {
+  border-right: 0; }
 
 .animate {
   transform: translateZ(50em);

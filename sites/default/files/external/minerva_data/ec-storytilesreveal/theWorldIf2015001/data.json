@@ -27,7 +27,7 @@
         "section": "Science and technology",
         "title": "tile04",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/cats",
+        "image" : "http://lorempixel.com/grey/228/176/cats",
         "type" : "quarter",
         "tint" : "red"
       },
@@ -35,7 +35,7 @@
         "section": "Science and technology",
         "title": "tile05",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/city",
+        "image" : "http://lorempixel.com/grey/228/176/city",
         "type" : "quarter",
         "tint" : "red"
       },
@@ -43,7 +43,7 @@
         "section": "Science and technology",
         "title": "tile06",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/animals",
+        "image" : "http://lorempixel.com/grey/228/176/animals",
         "type" : "quarter",
         "tint" : "red"
       },
@@ -51,7 +51,7 @@
         "section": "Science and technology",
         "title": "tile07",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/sports",
+        "image" : "http://lorempixel.com/grey/228/176/sports",
         "type" : "quarter",
         "tint" : "red"
       },
@@ -73,7 +73,7 @@
         "section": "Science and technology",
         "title": "tile10",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/food",
+        "image" : "http://lorempixel.com/grey/228/176/food",
         "type" : "quarter",
         "tint" : "green"
       },
@@ -81,7 +81,7 @@
         "section": "Science and technology",
         "title": "tile11",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/fashion",
+        "image" : "http://lorempixel.com/grey/228/176/fashion",
         "type" : "quarter",
         "tint" : "green"
       },
@@ -89,7 +89,7 @@
         "section": "Science and technology",
         "title": "tile12",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/nature",
+        "image" : "http://lorempixel.com/grey/228/176/nature",
         "type" : "quarter",
         "tint" : "green"
       },
@@ -97,7 +97,7 @@
         "section": "Science and technology",
         "title": "tile13",
         "rubrik": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-        "image" : "http://lorempixel.com/228/176/transport",
+        "image" : "http://lorempixel.com/grey/228/176/transport",
         "type" : "quarter",
         "tint" : "green"
       },
