@@ -185,6 +185,10 @@ ul {
 
 
 
+// @mixin filter() {
+//   grayscale($color);
+// }
+
 
 @mixin aspect-ratio($width, $height) {
   position: relative;
