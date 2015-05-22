@@ -72,6 +72,22 @@ module.exports = function(grunt) {
           {
             src: 'css/style.css',
             dest: 'dist/css/style.css'
+          },
+          {
+            src: 'js/init.js',
+            dest: 'dist/js/init.js'
+          }
+        ]
+      },
+      all: {
+        files: [
+          {
+            src: 'css/style.css',
+            dest: 'dist/css/style.css'
+          },
+          {
+            src: 'js/init.js',
+            dest: 'dist/js/init.js'
           }
         ]
       },
@@ -465,9 +481,9 @@ module.exports = function(grunt) {
   grunt.registerTask('git', ['shell', 'githooks']);
 
   // Run this task when the code is ready for production.
-  grunt.registerTask('production', ['sass:dist',  'csstojs', 'useminPrepare', 'concat', 'concat:dist', 'uglify', 'robFix']);
+  grunt.registerTask('production', ['sass:dist',  'csstojs', 'useminPrepare', 'concat', 'concat:dist', 'uglify', 'robFix', 'copy:all']);
   //'criticalcss:custom',
-  grunt.registerTask('template', [ 'copy:template', 'inlineCSS', 'concat:template']);
+  grunt.registerTask('template', [ 'copy:template', 'copy:all', 'inlineCSS', 'concat:template']);
   //Get the critical css for the widget
   grunt.registerTask('csscritical', ['concat:css', 'criticalcss:custom']);
 };
