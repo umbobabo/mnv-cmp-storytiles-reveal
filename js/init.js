@@ -11,13 +11,13 @@ function initReveal(){
   articleContainer = document.getElementsByClassName('article-container'),
   launch = true;
 
-  tileTarget =  $( ".article-reveal-container ul li:last-child" );
+  tileTarget =  document.querySelector( ".article-reveal-container ul li:last-child" );
 
-  tileTarget[0].addEventListener("transitionend", detectTheEnd, false);
-  tileTarget[0].addEventListener("webkitTransitionEnd", detectTheEnd, false);
-  tileTarget[0].addEventListener("mozTransitionEnd", detectTheEnd, false);
-  tileTarget[0].addEventListener("msTransitionEnd", detectTheEnd, false);
-  tileTarget[0].addEventListener("oTransitionEnd", detectTheEnd, false);
+  tileTarget.addEventListener("transitionend", detectTheEnd, false);
+  tileTarget.addEventListener("webkitTransitionEnd", detectTheEnd, false);
+  tileTarget.addEventListener("mozTransitionEnd", detectTheEnd, false);
+  tileTarget.addEventListener("msTransitionEnd", detectTheEnd, false);
+  tileTarget.addEventListener("oTransitionEnd", detectTheEnd, false);
 
 
 
