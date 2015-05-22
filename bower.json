@@ -7,7 +7,7 @@
   ],
   "description": "Provide a grid with revealing effect",
   "main": [
-    "./dist/js/init.min.js",
+    "./dist/js/init.min.js"
   ],
   "license": "MIT",
   "ignore": [
