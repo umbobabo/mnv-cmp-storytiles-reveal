@@ -139,36 +139,38 @@ ul {
 .image:hover {
   transform: scale(1.2, 1.2); }
 
-.cover {
+.article-reveal-container ul li:nth-child(1) {
   position: relative;
   min-width: 100%; }
-  .cover:before {
+  .article-reveal-container ul li:nth-child(1):before {
     display: block;
     content: '';
     width: 100%;
     padding-top: 56.25%; }
-  .cover > .content {
+  .article-reveal-container ul li:nth-child(1) > .content {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0; }
+  .article-reveal-container ul li:nth-child(1) .rubrik, .article-reveal-container ul li:nth-child(1) .section {
+    display: block; }
 
-.full {
+.tile-full {
   min-width: 100%;
   position: relative; }
-  .full:before {
+  .tile-full:before {
     display: block;
     content: '';
     width: 100%;
     padding-top: 25%; }
-  .full > .content {
+  .tile-full > .content {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0; }
-  .full .image-grad {
+  .tile-full .image-grad {
     pointer-events: none;
     width: 100%;
     height: 100%;
@@ -192,30 +194,30 @@ ul {
     height: 100%;
     opacity: 0.8; }
 
-.quarter {
+.tile-1 {
   min-width: 25%;
   border-right: 6px solid #000;
   position: relative; }
-  .quarter:before {
+  .tile-1:before {
     display: block;
     content: '';
     width: 100%;
     padding-top: 75%; }
-  .quarter > .content {
+  .tile-1 > .content {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0; }
-  .quarter .title {
+  .tile-1 .title {
     font-size: 20px; }
     @media (max-width: 480px) {
-      .quarter .title {
+      .tile-1 .title {
         top: 16px;
         font-size: 16px; } }
-  .quarter .section, .quarter .rubrik {
+  .tile-1 .section, .tile-1 .rubrik {
     display: none; }
-  .quarter .image-tint-red, .quarter .image-tint-green {
+  .tile-1 .image-tint-red, .tile-1 .image-tint-green {
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -223,13 +225,13 @@ ul {
     height: 100%;
     z-index: 1;
     background-color: rgba(255, 0, 0, 0.3); }
-  .quarter .image-tint-green {
+  .tile-1 .image-tint-green {
     background-color: rgba(40, 130, 30, 0.3); }
 
-.quarter:nth-child(7) {
+.tile-1:nth-child(7) {
   border-right: 0; }
 
-.quarter:nth-child(13) {
+.tile-1:nth-child(13) {
   border-right: 0; }
 
 .animate {

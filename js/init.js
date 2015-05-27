@@ -6,9 +6,9 @@ function initReveal(){
 
   var articleActive,
   revealContainer = document.getElementsByClassName('article-reveal-container'),
-  btn = document.getElementsByClassName('close-btn'),
+  close = document.querySelector('.close-btn'),
   tile = document.getElementsByClassName('artical-reveal-tile'),
-  articleContainer = document.getElementsByClassName('article-container'),
+  articleContainer = document.querySelector('.article-container'),
   launch = true;
 
   tileTarget =  document.querySelector( ".article-reveal-container ul li:last-child" );
@@ -32,19 +32,22 @@ function initReveal(){
     if (e.propertyName == "opacity") {
       if(articleActive === true){
         revealContainer[0].classList.add('inactive');
-        btn[0].style.visibility = 'visible';
-        btn[0].classList.remove('inactive');
+        close.style.visibility = 'visible';
+        close.classList.remove('inactive');
         resetTransitionDelay();
-        launchiFrame();
+      } else {
+        emptyArticle();
       }
     }
   }
 
-  function launchiFrame() {
+  function loadArticle(data) {
+    var tmp = Handlebars.templates['article'];
     if(launch === true){
-       $( ".article-container" ).append('<div id="iframe" class="iframe"><iframe src="http://www.economist.com/democracy" width="100%" height="5000px" scrolling="no" frameborder="0"></iframe></div>');
-     }
-     launch = false;
+      articleContainer.innerHTML = tmp(data);
+    }
+    goRevealAnimation();
+    launch = false;
   }
 
   function triggerReverse(){
@@ -63,7 +66,25 @@ function initReveal(){
 
 
   $('.artical-reveal-tile').bind('click', function() {
+    var nid = $(this).attr('data-nid');
+    if(nid){
+      $.get("http://localhost:3100/article/" + nid, function( data ) {
+        var img = (data.hasOwnProperty('field_images') && data.field_images[0] !== null && data.field_images[0].filepath) ? 'http://www.economist.com/' + data.field_images[0].filepath : '';
+        loadArticle({
+          article: {
+            image: img,
+            flyTitle: data.field_fly_title[0].value,
+            rubric: data.field_rubric[0].value,
+            body: data.body
+          }
+        });
+      });
+    }
+  });
 
+
+
+  function goRevealAnimation(){
     $(this).toggleClass("animate");
 
     articleActive = !articleActive;
@@ -93,10 +114,13 @@ function initReveal(){
 
     triggerReverse();
     triggerForwards();
-  });
+  }
 
+  function emptyArticle(){
+    articleContainer.innerHTML = '';
+  }
 
-  btn[0].addEventListener("click", function () {
+  close.addEventListener("click", function () {
     this.classList.toggle('inactive');
     if (articleActive === true){
       revealContainer[0].classList.remove('inactive');

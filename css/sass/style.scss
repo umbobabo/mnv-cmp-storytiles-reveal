@@ -221,17 +221,21 @@ ul {
   }
 }
 
-.cover {
+// Cover
+.article-reveal-container ul li:nth-child(1){
   @include aspect-ratio(16, 9);
   min-width: 100%;
+  .rubrik,
+  .section {
+    display: block;
+  }
 }
 
-.full {
-   min-width: 100%;
-  // height: 280px;
-   @include aspect-ratio(4, 1);
+.tile-full {
+  min-width: 100%;
+  @include aspect-ratio(4, 1);
 
-   .image-grad {
+  .image-grad {
     pointer-events: none;
     width: 100%;
     height: 100%;
@@ -248,10 +252,10 @@ ul {
     width: 60%;
     height: 100%;
     opacity: 0.8;
-   }
+  }
 }
 
-.quarter {
+.tile-1 {
   min-width: 25%;
   border-right: 6px solid #000;
   @include aspect-ratio(4, 3);
@@ -279,11 +283,11 @@ ul {
   }
 }
 
-.quarter:nth-child(7){
+.tile-1:nth-child(7){
   border-right: 0;
 }
 
-.quarter:nth-child(13){
+.tile-1:nth-child(13){
   border-right: 0;
 }
 
