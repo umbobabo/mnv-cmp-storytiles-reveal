@@ -1,20 +1,22 @@
 <div class="main-container">
   <div class="close-btn">X</div>
-  <div class="article-container"></div>
+  <div class="article-container">{{> article}}</div>
   <div class="article-reveal-container">
     <ul>
       {{#each tile}}
-      <li class="artical-reveal-tile {{type}}" data-nid="{{nid}}">
-        <div class="tile-content">
-          <h2 class="section">{{section}}</h2>
-          <h2 class="title">{{title}}</h2>
-          <h2 class="rubrik">{{rubrik}}</h2>
-          {{#ifvalue type equals="quarter"}}
-          <div class="image-tint-{{tint}}"></div>
-          {{/ifvalue}}
-          <div class="image-grad"></div>
-          <img class="image" src="{{image}}">
-        </div>
+      <li class="artical-reveal-tile {{type}} {{animate}}" data-nid="{{nid}}">
+        <a href="{{url}}">
+          <div class="tile-content">
+            <h2 class="section">{{section}}</h2>
+            <h2 class="title">{{title}}</h2>
+            <h2 class="rubrik">{{rubrik}}</h2>
+            {{#ifvalue type equals="quarter"}}
+            <div class="image-tint-{{tint}}"></div>
+            {{/ifvalue}}
+            <div class="image-grad"></div>
+            <img class="image" src="{{image}}">
+          </div>
+        </a>
       </li>
       {{/each}}
     </ul>

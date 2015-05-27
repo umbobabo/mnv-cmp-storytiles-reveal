@@ -106,7 +106,8 @@ html {
   overflow-y: scroll !important;
 }
 
-.inactive {
+.inactive,
+.article .article-reveal-container {
   visibility: hidden !important;
   overflow: hidden !important;
 }
@@ -146,10 +147,10 @@ ul {
   color: #fff;
   font-size: 20px;
   text-align: center;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   flex : 1;
   background-color: rgba(0, 0 , 0, 1);
   border-bottom: 4px solid  #000;
@@ -298,6 +299,18 @@ ul {
   /*  transform: scale(2);*/
   opacity: 0;
 }
+
+// .enteringAnimation {
+//   transform: translateZ(50em);
+//   /*transform: translateX(-500em);*/
+//   /*  transform: translateY(-5em);*/
+//   /*  transform: scale(2);*/
+//   opacity: 0;
+//   -webkit-transition: all 0.5s ease-in-out 2s;
+//   -moz-transition: all 0.5s ease-in-out 2s;
+//   -o-transition: all 0.5s ease-in-out 2s;
+//   transition: all 0.5s ease-in-out 2s;
+// }
 
 button {
   width: 200px;

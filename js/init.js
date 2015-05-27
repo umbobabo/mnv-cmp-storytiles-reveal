@@ -9,7 +9,6 @@ function initReveal(){
   close = document.querySelector('.close-btn'),
   tile = document.getElementsByClassName('artical-reveal-tile'),
   articleContainer = document.querySelector('.article-container'),
-  launch = true;
 
   tileTarget =  document.querySelector( ".article-reveal-container ul li:last-child" );
 
@@ -19,6 +18,14 @@ function initReveal(){
   tileTarget.addEventListener("msTransitionEnd", detectTheEnd, false);
   tileTarget.addEventListener("oTransitionEnd", detectTheEnd, false);
 
+  preventDefaultClicks();
+
+  function preventDefaultClicks(){
+    $('.artical-reveal-tile a').on('click', function(e){
+      e.preventDefault();
+      //e.stopPropagation();
+    });
+  }
 
 
   function resetTransitionDelay() {
@@ -43,22 +50,20 @@ function initReveal(){
 
   function loadArticle(data) {
     var tmp = Handlebars.templates['article'];
-    if(launch === true){
-      articleContainer.innerHTML = tmp(data);
-    }
+    var html = tmp(data);
+    $(articleContainer).html(html);
     goRevealAnimation();
-    launch = false;
   }
 
   function triggerReverse(){
     for (var i = 0; i <= revNumber.length; i++) {
-      $( ".artical-reveal-tile:eq(" + revNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.2 *i) + "s" );
+      $( ".artical-reveal-tile:eq(" + revNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.1 *i) + "s" );
     }
   }
 
   function triggerForwards(){
     for (var i = 0; i <= forNumber.length; i++) {
-      $( ".artical-reveal-tile:eq(" + forNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.2 *i) + "s" );
+      $( ".artical-reveal-tile:eq(" + forNumber[i] + ")" ).toggleClass( "animate" ).css( "transition-delay", (0.1 *i) + "s" );
     }
   }
 
@@ -69,7 +74,9 @@ function initReveal(){
     var nid = $(this).attr('data-nid');
     if(nid){
       $.get("http://localhost:3100/article/" + nid, function( data ) {
+        // TODO Add data check to prevent errors on empty values or missing properties
         var img = (data.hasOwnProperty('field_images') && data.field_images[0] !== null && data.field_images[0].filepath) ? 'http://www.economist.com/' + data.field_images[0].filepath : '';
+        //console.log(data.body);
         loadArticle({
           article: {
             image: img,
