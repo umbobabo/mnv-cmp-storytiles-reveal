@@ -1,3 +1,88 @@
+.mnv-preloader-overlay {
+  content: '';
+  background: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
+
+.mnv-preloader-loader, .mnv-preloader-loader:before, .mnv-preloader-loader:after {
+  background: #e3120b;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em; }
+
+.mnv-preloader-loader:before, .mnv-preloader-loader:after {
+  position: absolute;
+  top: 0;
+  content: ''; }
+
+.mnv-preloader-loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s; }
+
+.mnv-preloader-loader {
+  text-indent: -9999em;
+  margin: 8em auto;
+  position: absolute;
+  height: 6em;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  left: 50%;
+  top: 50%;
+  margin-left: -3em;
+  margin-top: -3em; }
+
+.mnv-preloader-loader:after {
+  left: 1.5em; }
+
+@-webkit-keyframes load1 {
+  0% {
+    box-shadow: 0 0 #e3120b;
+    height: 4em; }
+
+  80% {
+    box-shadow: 0 0 #e3120b;
+    height: 4em; }
+
+  100% {
+    box-shadow: 0 0 #e3120b;
+    height: 4em; }
+
+  40% {
+    box-shadow: 0 -2em #e3120b;
+    height: 5em; } }
+
+@keyframes load1 {
+  0% {
+    box-shadow: 0 0 #e3120b;
+    height: 4em; }
+
+  80% {
+    box-shadow: 0 0 #e3120b;
+    height: 4em; }
+
+  100% {
+    box-shadow: 0 0 #e3120b;
+    height: 4em; }
+
+  40% {
+    box-shadow: 0 -2em #e3120b;
+    height: 5em; } }
+
+.mnv-preloader-overlay {
+  opacity: 0.5; }
+
 @font-face {
   font-family: Neutra2-Medium;
   src: url("../fonts/Neutraface2Display-Medium.otf") format("opentype"); }
@@ -217,7 +302,7 @@ ul {
         font-size: 16px; } }
   .tile-1 .section, .tile-1 .rubrik {
     display: none; }
-  .tile-1 .image-tint-red, .tile-1 .image-tint-green {
+  .tile-1:nth-of-type(2) .image-tint, .tile-1:nth-of-type(3) .image-tint, .tile-1:nth-of-type(4) .image-tint, .tile-1:nth-of-type(5) .image-tint, .tile-1:nth-of-type(8) .image-tint, .tile-1:nth-of-type(9) .image-tint, .tile-1:nth-of-type(10) .image-tint, .tile-1:nth-of-type(11) .image-tint {
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -225,7 +310,7 @@ ul {
     height: 100%;
     z-index: 1;
     background-color: rgba(255, 0, 0, 0.3); }
-  .tile-1 .image-tint-green {
+  .tile-1:nth-of-type(8) .image-tint, .tile-1:nth-of-type(9) .image-tint, .tile-1:nth-of-type(10) .image-tint, .tile-1:nth-of-type(11) .image-tint {
     background-color: rgba(40, 130, 30, 0.3); }
 
 .tile-1:nth-child(7) {

@@ -31,28 +31,35 @@
 //   font-style: normal;
 // }
 
+// Preloader settings
+@import '/bower_components/mnv-shared/css/components/preloader/default';
+// Changing default color
+$preloader-overlay-color: #000;
+@import '/bower_components/mnv-shared/css/components/preloader/preloader-bar';
+.mnv-preloader-overlay {
+  opacity: 0.5;
+}
 /// below are the new fonts we need to check the license / usage of these!!!!
-
 @font-face {
-font-family: Neutra2-Medium;
-src: url("../fonts/Neutraface2Display-Medium.otf") format("opentype");
+  font-family: Neutra2-Medium;
+  src: url("../fonts/Neutraface2Display-Medium.otf") format("opentype");
 }
 
 @font-face {
-font-family: Neutra2-Bold;
-src: url("../fonts/Neutraface2Display-Bold.otf") format("opentype");
+  font-family: Neutra2-Bold;
+  src: url("../fonts/Neutraface2Display-Bold.otf") format("opentype");
 }
 
 @font-face {
-font-family: Neutra2-Titling;
-src: url("../fonts/Neutraface2Display-Titling.ttf") format("opentype");
+  font-family: Neutra2-Titling;
+  src: url("../fonts/Neutraface2Display-Titling.ttf") format("opentype");
 }
 
 
 
 @font-face {
-font-family: Neutra2-Light;
-src: url("../fonts/Neutraface2Display-Light.otf") format("opentype");
+  font-family: Neutra2-Light;
+  src: url("../fonts/Neutraface2Display-Light.otf") format("opentype");
 }
 
 
@@ -270,7 +277,15 @@ ul {
   .section, .rubrik {
     display: none;
   }
-  .image-tint-red, .image-tint-green {
+  // TODO This part need to be reviewed 
+  &:nth-of-type(2) .image-tint,
+  &:nth-of-type(3) .image-tint,
+  &:nth-of-type(4) .image-tint,
+  &:nth-of-type(5) .image-tint,
+  &:nth-of-type(8) .image-tint,
+  &:nth-of-type(9) .image-tint,
+  &:nth-of-type(10) .image-tint,
+  &:nth-of-type(11) .image-tint {
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -279,7 +294,10 @@ ul {
     z-index: 1;
     background-color: rgba(255, 0, 0, 0.3);
   }
-  .image-tint-green {
+  &:nth-of-type(8) .image-tint,
+  &:nth-of-type(9) .image-tint,
+  &:nth-of-type(10) .image-tint,
+  &:nth-of-type(11) .image-tint {
     background-color: rgba(40, 130, 30, 0.3);
   }
 }

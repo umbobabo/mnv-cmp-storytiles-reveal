@@ -1,16 +1,13 @@
-docReady(function(){
-  initReveal();
-});
-
 function initReveal(){
-
   var articleActive,
+  me = this,
   revealContainer = document.getElementsByClassName('article-reveal-container'),
   close = document.querySelector('.close-btn'),
   tile = document.getElementsByClassName('artical-reveal-tile'),
   articleContainer = document.querySelector('.article-container'),
 
   tileTarget =  document.querySelector( ".article-reveal-container ul li:last-child" );
+  me.el = document.querySelector('.mnv-ec-storytilesreveal');
 
   tileTarget.addEventListener("transitionend", detectTheEnd, false);
   tileTarget.addEventListener("webkitTransitionEnd", detectTheEnd, false);
@@ -52,6 +49,7 @@ function initReveal(){
     var tmp = Handlebars.templates['article'];
     var html = tmp(data);
     $(articleContainer).html(html);
+    me.removePreloader();
     goRevealAnimation();
   }
 
@@ -73,6 +71,7 @@ function initReveal(){
   $('.artical-reveal-tile').bind('click', function() {
     var nid = $(this).attr('data-nid');
     if(nid){
+      me.addPreloader();
       $.get("http://localhost:3100/article/" + nid, function( data ) {
         // TODO Add data check to prevent errors on empty values or missing properties
         var img = (data.hasOwnProperty('field_images') && data.field_images[0] !== null && data.field_images[0].filepath) ? 'http://www.economist.com/' + data.field_images[0].filepath : '';
@@ -140,5 +139,10 @@ function initReveal(){
     }
     articleActive = !articleActive;
   });
-
 }
+
+initReveal.prototype = new Widget();
+
+docReady(function(){
+  var reveal = new initReveal();
+});
