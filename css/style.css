@@ -137,7 +137,7 @@ html {
   visibility: visible !important;
   overflow-y: scroll !important; }
 
-.inactive, .article .article-reveal-container {
+.inactive {
   visibility: hidden !important;
   overflow: hidden !important; }
 
@@ -302,7 +302,7 @@ ul {
         font-size: 16px; } }
   .tile-1 .section, .tile-1 .rubrik {
     display: none; }
-  .tile-1:nth-of-type(2) .image-tint, .tile-1:nth-of-type(3) .image-tint, .tile-1:nth-of-type(4) .image-tint, .tile-1:nth-of-type(5) .image-tint, .tile-1:nth-of-type(8) .image-tint, .tile-1:nth-of-type(9) .image-tint, .tile-1:nth-of-type(10) .image-tint, .tile-1:nth-of-type(11) .image-tint {
+  .tile-1:nth-of-type(4) .image-tint, .tile-1:nth-of-type(5) .image-tint, .tile-1:nth-of-type(6) .image-tint, .tile-1:nth-of-type(7) .image-tint, .tile-1:nth-of-type(10) .image-tint, .tile-1:nth-of-type(11) .image-tint, .tile-1:nth-of-type(12) .image-tint, .tile-1:nth-of-type(13) .image-tint {
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -310,7 +310,7 @@ ul {
     height: 100%;
     z-index: 1;
     background-color: rgba(255, 0, 0, 0.3); }
-  .tile-1:nth-of-type(8) .image-tint, .tile-1:nth-of-type(9) .image-tint, .tile-1:nth-of-type(10) .image-tint, .tile-1:nth-of-type(11) .image-tint {
+  .tile-1:nth-of-type(10) .image-tint, .tile-1:nth-of-type(11) .image-tint, .tile-1:nth-of-type(12) .image-tint, .tile-1:nth-of-type(13) .image-tint {
     background-color: rgba(40, 130, 30, 0.3); }
 
 .tile-1:nth-child(7) {
@@ -344,7 +344,6 @@ button {
   box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75); }
 
 .close-btn {
-  visibility: hidden;
   display: block;
   position: absolute;
   right: 20px;
@@ -359,6 +358,8 @@ button {
   height: 40px;
   margin-top: -20px;
   text-align: center; }
+  .landing .close-btn {
+    visibility: hidden; }
 
 .close-btn:hover {
   cursor: pointer;

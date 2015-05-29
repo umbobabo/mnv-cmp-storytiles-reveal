@@ -35,7 +35,7 @@
 @import '/bower_components/mnv-shared/css/components/preloader/default';
 // Changing default color
 $preloader-overlay-color: #000;
-@import '/bower_components/mnv-shared/css/components/preloader/preloader-bar';
+@import '/bower_components/mnv-shared/css/components/preloader/preloader-bars';
 .mnv-preloader-overlay {
   opacity: 0.5;
 }
@@ -114,7 +114,7 @@ html {
 }
 
 .inactive,
-.article .article-reveal-container {
+.no-js .article .article-reveal-container {
   visibility: hidden !important;
   overflow: hidden !important;
 }
@@ -277,15 +277,17 @@ ul {
   .section, .rubrik {
     display: none;
   }
+  $firstRedTile: 4;
+  $firstGreenTile: 10;
   // TODO This part need to be reviewed 
-  &:nth-of-type(2) .image-tint,
-  &:nth-of-type(3) .image-tint,
-  &:nth-of-type(4) .image-tint,
-  &:nth-of-type(5) .image-tint,
-  &:nth-of-type(8) .image-tint,
-  &:nth-of-type(9) .image-tint,
-  &:nth-of-type(10) .image-tint,
-  &:nth-of-type(11) .image-tint {
+  &:nth-of-type(#{$firstRedTile}) .image-tint,
+  &:nth-of-type(#{$firstRedTile+1}) .image-tint,
+  &:nth-of-type(#{$firstRedTile+2}) .image-tint,
+  &:nth-of-type(#{$firstRedTile+3}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile+1}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile+2}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile+3}) .image-tint {
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -294,10 +296,10 @@ ul {
     z-index: 1;
     background-color: rgba(255, 0, 0, 0.3);
   }
-  &:nth-of-type(8) .image-tint,
-  &:nth-of-type(9) .image-tint,
-  &:nth-of-type(10) .image-tint,
-  &:nth-of-type(11) .image-tint {
+  &:nth-of-type(#{$firstGreenTile}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile+1}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile+2}) .image-tint,
+  &:nth-of-type(#{$firstGreenTile+3}) .image-tint  {
     background-color: rgba(40, 130, 30, 0.3);
   }
 }
@@ -349,7 +351,9 @@ button {
 }
 
 .close-btn {
-  visibility: hidden;
+  .landing & {
+    visibility: hidden;
+  }
   display: block;
   position: absolute;
   right: 20px;

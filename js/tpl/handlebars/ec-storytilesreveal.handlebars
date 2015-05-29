@@ -3,18 +3,18 @@
   <div class="article-container">{{> article}}</div>
   <div class="article-reveal-container">
     <ul>
-      {{#each tile}}
-      <li class="artical-reveal-tile {{type}} {{animate}}" data-nid="{{nid}}">
+      {{#each tiles}}
+      <li class="artical-reveal-tile {{type}} {{animate}}" data-id="{{id}}" id="tile{{id}}">
         <a href="{{url}}">
           <div class="tile-content">
             <h2 class="section">{{section}}</h2>
             <h2 class="title">{{title}}</h2>
-            <h2 class="rubrik">{{rubrik}}</h2>
+            <h2 class="rubrik">{{rubric}}</h2>
             {{#ifvalue type equals="tile-1"}}
             <div class="image-tint"></div>
-            {{/ifvalue}}
             <div class="image-grad"></div>
-            <img class="image" src="{{image}}">
+            {{/ifvalue}}
+            <img class="image" src="{{img}}">
           </div>
         </a>
       </li>
