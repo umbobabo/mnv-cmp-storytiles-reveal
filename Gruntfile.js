@@ -46,6 +46,10 @@ module.exports = function(grunt) {
       BundleVariation: {
         files: ['config.json'],
         tasks: ['BundleVariation']
+      },
+      templates: {
+        files: ['js/tpl/handlebars/*'],
+        tasks: ['production']
       }
     },
     concat: {
@@ -91,6 +95,15 @@ module.exports = function(grunt) {
           }
         ]
       },
+      bower: {
+        files: [
+          {
+            expand: true,
+            src: ['dist/**'],
+            dest: '../../bower_components/mnv-cmp-storytiles-reveal/'
+          }
+        ]
+      }
     },
     uglify: {
       options: {
@@ -481,7 +494,7 @@ module.exports = function(grunt) {
   grunt.registerTask('git', ['shell', 'githooks']);
 
   // Run this task when the code is ready for production.
-  grunt.registerTask('production', ['sass:dist',  'csstojs', 'useminPrepare', 'concat', 'concat:dist', 'uglify', 'robFix', 'copy:all']);
+  grunt.registerTask('production', ['sass:dist',  'csstojs', 'useminPrepare', 'concat', 'concat:dist', 'uglify', 'robFix', 'copy:all', 'copy:bower']);
   //'criticalcss:custom',
   grunt.registerTask('template', [ 'copy:template', 'copy:all', 'inlineCSS', 'concat:template']);
   //Get the critical css for the widget

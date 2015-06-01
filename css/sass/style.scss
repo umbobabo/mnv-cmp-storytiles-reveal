@@ -42,24 +42,24 @@ $preloader-overlay-color: #000;
 /// below are the new fonts we need to check the license / usage of these!!!!
 @font-face {
   font-family: Neutra2-Medium;
-  src: url("../fonts/Neutraface2Display-Medium.otf") format("opentype");
+  src: url('../fonts/Neutraface2Display-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: Neutra2-Bold;
-  src: url("../fonts/Neutraface2Display-Bold.otf") format("opentype");
+  src: url('../fonts/Neutraface2Display-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: Neutra2-Titling;
-  src: url("../fonts/Neutraface2Display-Titling.ttf") format("opentype");
+  src: url('../fonts/Neutraface2Display-Titling.ttf') format('opentype');
 }
 
 
 
 @font-face {
   font-family: Neutra2-Light;
-  src: url("../fonts/Neutraface2Display-Light.otf") format("opentype");
+  src: url('../fonts/Neutraface2Display-Light.otf') format('opentype');
 }
 
 
@@ -353,6 +353,7 @@ button {
 .close-btn {
   .landing & {
     visibility: hidden;
+    display: none;
   }
   display: block;
   position: absolute;
