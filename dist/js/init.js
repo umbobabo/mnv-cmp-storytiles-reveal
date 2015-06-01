@@ -8,6 +8,7 @@ function initReveal(){
 
   tileTarget =  document.querySelector( ".article-reveal-container ul li:last-child" );
   me.el = document.querySelector('.mnv-ec-storytilesreveal');
+  me.pushStateUsed = false;
 
   tileTarget.addEventListener("transitionend", detectTheEnd, false);
   tileTarget.addEventListener("webkitTransitionEnd", detectTheEnd, false);
@@ -36,8 +37,6 @@ function initReveal(){
     if (e.propertyName == "opacity") {
       if(articleActive === true){
         revealContainer[0].classList.add('inactive');
-        close.style.visibility = 'visible';
-        close.classList.remove('inactive');
         resetTransitionDelay();
       } else {
         emptyArticle();
@@ -76,11 +75,13 @@ function initReveal(){
 
   // Manage history changes
   window.onpopstate = function(event) {
+    me.pushStateUsed = true;
     if(event.state.hasOwnProperty("articleID")){
       me.showArticle(event.state.articleID);
     } else {
       me.goLanding();
     }
+    this.pushStateUsed = false;
   };
 
   me.swapClass = function(article){
@@ -108,8 +109,10 @@ function initReveal(){
         // TODO add error management
       })
       .done(function() {
-        // TODO complete this wit page information
-        history.pushState({ articleID: articleID },"Replace this with the title page", "TheWorldIf/replaceThisWithAlias.html");
+        // TODO complete this wit page information and do it DRY
+        if(!me.pushStateUsed){
+          history.pushState({ articleID: articleID },"Replace this with the title page", "/TheWorldIf/replaceThisWithAlias.html");
+        }
       });
     }
   }
@@ -149,7 +152,9 @@ function initReveal(){
   function emptyArticle(){
     articleContainer.innerHTML = '';
     // TODO Replace title with page information
-    history.pushState({},"Replace this with the title page", "/TheWorldIf");
+    if(!me.pushStateUsed){
+      history.pushState({},"Replace this with the title page", "/TheWorldIf");
+    }
   }
 
   me.goLanding = function(){
@@ -167,7 +172,6 @@ function initReveal(){
   }
 
   close.addEventListener("click", function () {
-    this.classList.toggle('inactive');
     me.goLanding();
   });
 
@@ -182,8 +186,11 @@ docReady(function(){
   // If an article is showed on load, wait a second and run the reveal animation
   if($(reveal.el).hasClass('article')){
     setTimeout(function(){
-      var articleID = $(me.el).attr("data-articleID");
+      var articleID = $(reveal.el).attr("data-articleID");
       reveal.showArticle(articleID);
     }, 1500);
+  } else {
+    // TODO Do it DRY
+    history.pushState({},"Replace this with the title page", "/TheWorldIf");
   }
 });

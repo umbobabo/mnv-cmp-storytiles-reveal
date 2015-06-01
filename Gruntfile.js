@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         tasks: ['BundleVariation']
       },
       templates: {
-        files: ['js/tpl/handlebars/*'],
+        files: ['js/tpl/handlebars/*', 'css/style.css', 'js/**'],
         tasks: ['production']
       }
     },
