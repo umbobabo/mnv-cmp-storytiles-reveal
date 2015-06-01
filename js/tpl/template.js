@@ -42,9 +42,11 @@ templates['ec-storytilesreveal'] = template({"1":function(depth0,helpers,partial
 },"2":function(depth0,helpers,partials,data) {
     return "            <div class=\"image-tint\"></div>\n            <div class=\"image-grad\"></div>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, helper;
 
-  return "<div class=\"main-container\">\n  <div class=\"close-btn\">X</div>\n  <div class=\"article-container\">"
+  return "<div class=\"main-container\">\n  <a class=\"close-btn\" href=\""
+    + this.escapeExpression(((helper = (helper = helpers.landingPageUrl || (depth0 != null ? depth0.landingPageUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"landingPageUrl","hash":{},"data":data}) : helper)))
+    + "\">X</a>\n  <div class=\"article-container\">"
     + ((stack1 = this.invokePartial(partials.article,depth0,{"name":"article","data":data,"helpers":helpers,"partials":partials})) != null ? stack1 : "")
     + "</div>\n  <div class=\"article-reveal-container\">\n    <ul>\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.tiles : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
