@@ -1,11 +1,5 @@
 (function() {
 var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['article-frame'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<iframe src=\"http://www.economist.com/news/essays/21609649-china-becomes-again-worlds-largest-economy-it-wants-respect-it-enjoyed-centuries-past-it-does-not\" width=\"960\" height=\"6500\" class=\"frameMe\"></iframe>\n<style>\n\n.frameMe {\n  margin: auto;\n  border: none;\n  height: 20000px;\n  overflow: hidden;\n}\n\n.article-container {\n  text-align: center !important;\n    /*margin-top: -73px;*/\n}\n\n</style>";
-},"useData":true});
-}());
-(function() {
-var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['article'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
