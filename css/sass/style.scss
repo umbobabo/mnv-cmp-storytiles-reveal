@@ -63,7 +63,7 @@ $preloader-overlay-color: #000;
 }
 
 
-
+// TODO remove styles not releated to the widget ad wrap everything into the widget NS
 
 html, body {
   width: 100%;
@@ -78,16 +78,14 @@ html, body {
 .mnv-ec-storytilesreveal {
   height: 100%;
   font-family: Neutra2-Medium;
-}
-
-ul, li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+  ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 *, *:before, *:after {
@@ -154,10 +152,6 @@ ul {
   color: #fff;
   font-size: 20px;
   text-align: center;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
   flex : 1;
   background-color: rgba(0, 0 , 0, 1);
   border-bottom: 4px solid  #000;
@@ -312,25 +306,55 @@ ul {
   border-right: 0;
 }
 
-.animate {
-  transform: translateZ(50em);
-  /*transform: translateX(-500em);*/
-  /*  transform: translateY(-5em);*/
-  /*  transform: scale(2);*/
-  opacity: 0;
+// Animation
+// Start on change class applied to the container
+$transition-duration: 0.7s;
+$transition-delay: 0.2s;
+.artical-reveal-tile {
+  // TODO add other prefix
+  -webkit-transition-property: all;
+  -webkit-transition-duration: $transition-duration;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-delay: initial;
 }
 
-// .enteringAnimation {
-//   transform: translateZ(50em);
-//   /*transform: translateX(-500em);*/
-//   /*  transform: translateY(-5em);*/
-//   /*  transform: scale(2);*/
-//   opacity: 0;
-//   -webkit-transition: all 0.5s ease-in-out 2s;
-//   -moz-transition: all 0.5s ease-in-out 2s;
-//   -o-transition: all 0.5s ease-in-out 2s;
-//   transition: all 0.5s ease-in-out 2s;
-// }
+$tiles: 15;
+// Create delay for tiles
+@for $i from 0 to $tiles {
+  .article-reveal-container ul li:nth-child(#{$i}) {
+    -webkit-transition-delay:  $transition-delay * $i;
+  }
+}
+
+.landing {
+  .artical-reveal-tile.tile-full,
+  .artical-reveal-tile.cover {
+    transform: translate(0%, 0%)
+  }
+  .artical-reveal-tile.tile-1 {
+    transform: none;
+  }
+}
+
+.article{
+  .artical-reveal-tile.tile-full,
+  .artical-reveal-tile.cover {
+    &:nth-child(odd){
+      transform: translate(-100%, 0%)
+    }
+    &:nth-child(even){
+      transform: translate(100%, 0%)
+    }
+  }
+  .artical-reveal-tile.tile-1 {
+    &:nth-child(odd){
+      transform: translate(-400%, 0%)
+    }
+    &:nth-child(even){
+      transform: translate(400%, 0%)
+    }
+  }
+}
 
 button {
   width: 200px;
