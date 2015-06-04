@@ -1,20 +1,5 @@
 (function() {
 var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['article'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
-
-  return "<img src=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.image : stack1), depth0))
-    + "\" />\n"
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.flyTitle : stack1), depth0))
-    + "\n"
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.rubric : stack1), depth0))
-    + "\n"
-    + ((stack1 = alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.body : stack1), depth0)) != null ? stack1 : "");
-},"useData":true});
-}());
-(function() {
-var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['ec-storytilesreveal'] = template({"1":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
@@ -46,10 +31,25 @@ templates['ec-storytilesreveal'] = template({"1":function(depth0,helpers,partial
 
   return "<div class=\"main-container\">\n  <a class=\"close-btn\" href=\""
     + this.escapeExpression(((helper = (helper = helpers.landingPageUrl || (depth0 != null ? depth0.landingPageUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"landingPageUrl","hash":{},"data":data}) : helper)))
-    + "\">X</a>\n  <div class=\"article-container\">"
-    + ((stack1 = this.invokePartial(partials.article,depth0,{"name":"article","data":data,"helpers":helpers,"partials":partials})) != null ? stack1 : "")
-    + "</div>\n  <div class=\"article-reveal-container\">\n    <ul>\n"
+    + "\">X</a>\n  <!-- TODO The article partials have to be adde only on the SS version, not on the CS version -->\n  <div class=\"article-container\">"
+    + ((stack1 = this.invokePartial(partials['partials/theWorldIf/article'],depth0,{"name":"partials/theWorldIf/article","data":data,"helpers":helpers,"partials":partials})) != null ? stack1 : "")
+    + "</div>CCC\n  <div class=\"article-reveal-container\">\n    <ul>\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.tiles : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "    </ul>\n  </div>\n</div>\n\n\n\n\n\n\n\n\n\n\n\n";
 },"usePartial":true,"useData":true});
+}());
+(function() {
+var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['article'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "<img src=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.image : stack1), depth0))
+    + "\" />\n"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.flyTitle : stack1), depth0))
+    + "\n"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.rubric : stack1), depth0))
+    + "\n"
+    + ((stack1 = alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.body : stack1), depth0)) != null ? stack1 : "");
+},"useData":true});
 }());

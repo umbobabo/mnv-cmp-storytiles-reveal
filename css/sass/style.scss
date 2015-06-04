@@ -354,6 +354,9 @@ $tiles: 15;
       transform: translate(400%, 0%)
     }
   }
+  .article-reveal-container {
+    pointer-events: none;
+  }
 }
 
 button {
