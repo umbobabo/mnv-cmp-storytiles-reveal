@@ -1,32 +1,32 @@
 // @font-face {
 //   font-family: 'NeutraText-Bold';
-//   src: url('../fonts/NeutraText-Bold.eot');
-//   src: url('../fonts/NeutraText-Bold.eot') format('embedded-opentype'),
-//   url('../fonts/NeutraText-Bold.woff') format('woff'),
-//   url('../fonts/NeutraText-Bold.ttf') format('truetype'),
-//   url('../fonts/NeutraText-Bold.svg#NeutraText-Bold') format('svg');
+//   src: url('../../../mnv-shared/fonts/NeutraText-Bold.eot');
+//   src: url('../../../mnv-shared/fonts/NeutraText-Bold.eot') format('embedded-opentype'),
+//   url('../../../mnv-shared/fonts/NeutraText-Bold.woff') format('woff'),
+//   url('../../../mnv-shared/fonts/NeutraText-Bold.ttf') format('truetype'),
+//   url('../../../mnv-shared/fonts/NeutraText-Bold.svg#NeutraText-Bold') format('svg');
 //   font-weight: normal;
 //   font-style: normal;
 // }
 
 // @font-face {
 //   font-family: 'NeutraText-Book';
-//   src: url('../fonts/NeutraText-Book.eot');
-//   src: url('../fonts/NeutraText-Book.eot') format('embedded-opentype'),
-//   url('../fonts/NeutraText-Book.woff') format('woff'),
-//   url('../fonts/NeutraText-Book.ttf') format('truetype'),
-//   url('../fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
+//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot');
+//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot') format('embedded-opentype'),
+//   url('../../../mnv-shared/fonts/NeutraText-Book.woff') format('woff'),
+//   url('../../../mnv-shared/fonts/NeutraText-Book.ttf') format('truetype'),
+//   url('../../../mnv-shared/fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
 //   font-weight: normal;
 //   font-style: normal;
 // }
 
 // @font-face {
 //   font-family: 'Neutraface2-Bold';
-//   src: url('../fonts/NeutraText-Book.eot');
-//   src: url('../fonts/NeutraText-Book.eot') format('embedded-opentype'),
-//   url('../fonts/NeutraText-Book.woff') format('woff'),
-//   url('../fonts/NeutraText-Book.ttf') format('truetype'),
-//   url('../fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
+//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot');
+//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot') format('embedded-opentype'),
+//   url('../../../mnv-shared/fonts/NeutraText-Book.woff') format('woff'),
+//   url('../../../mnv-shared/fonts/NeutraText-Book.ttf') format('truetype'),
+//   url('../../../mnv-shared/fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
 //   font-weight: normal;
 //   font-style: normal;
 // }
@@ -42,24 +42,24 @@ $preloader-overlay-color: #000;
 /// below are the new fonts we need to check the license / usage of these!!!!
 @font-face {
   font-family: Neutra2-Medium;
-  src: url('../fonts/Neutraface2Display-Medium.otf') format('opentype');
+  src: url('../../../mnv-shared/fonts/Neutraface2Display-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: Neutra2-Bold;
-  src: url('../fonts/Neutraface2Display-Bold.otf') format('opentype');
+  src: url('../../../mnv-shared/fonts/Neutraface2Display-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: Neutra2-Titling;
-  src: url('../fonts/Neutraface2Display-Titling.ttf') format('opentype');
+  src: url('../../../mnv-shared/fonts/Neutraface2Display-Titling.ttf') format('opentype');
 }
 
 
 
 @font-face {
   font-family: Neutra2-Light;
-  src: url('../fonts/Neutraface2Display-Light.otf') format('opentype');
+  src: url('../../../mnv-shared/fonts/Neutraface2Display-Light.otf') format('opentype');
 }
 
 
