@@ -9,5 +9,6 @@ docReady(function(){
   });
 
   var tmp = Handlebars.templates['ec-storytilesreveal'];
+  Handlebars.registerPartial("partials/theWorldIf/article", Handlebars.templates['article']);
   document.querySelector('.mnv-ec-storytilesreveal').innerHTML = tmp(ecStoryTilesRevealData['ec-storytilesreveal-0']);
 });

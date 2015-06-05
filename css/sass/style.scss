@@ -1,32 +1,32 @@
 // @font-face {
 //   font-family: 'NeutraText-Bold';
-//   src: url('../../../mnv-shared/fonts/NeutraText-Bold.eot');
-//   src: url('../../../mnv-shared/fonts/NeutraText-Bold.eot') format('embedded-opentype'),
-//   url('../../../mnv-shared/fonts/NeutraText-Bold.woff') format('woff'),
-//   url('../../../mnv-shared/fonts/NeutraText-Bold.ttf') format('truetype'),
-//   url('../../../mnv-shared/fonts/NeutraText-Bold.svg#NeutraText-Bold') format('svg');
+//   src: url('/bower_components/mnv-shared/fonts/NeutraText-Bold.eot');
+//   src: url('/bower_components/mnv-shared/fonts/NeutraText-Bold.eot') format('embedded-opentype'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Bold.woff') format('woff'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Bold.ttf') format('truetype'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Bold.svg#NeutraText-Bold') format('svg');
 //   font-weight: normal;
 //   font-style: normal;
 // }
 
 // @font-face {
 //   font-family: 'NeutraText-Book';
-//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot');
-//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot') format('embedded-opentype'),
-//   url('../../../mnv-shared/fonts/NeutraText-Book.woff') format('woff'),
-//   url('../../../mnv-shared/fonts/NeutraText-Book.ttf') format('truetype'),
-//   url('../../../mnv-shared/fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
+//   src: url('/bower_components/mnv-shared/fonts/NeutraText-Book.eot');
+//   src: url('/bower_components/mnv-shared/fonts/NeutraText-Book.eot') format('embedded-opentype'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Book.woff') format('woff'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Book.ttf') format('truetype'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
 //   font-weight: normal;
 //   font-style: normal;
 // }
 
 // @font-face {
 //   font-family: 'Neutraface2-Bold';
-//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot');
-//   src: url('../../../mnv-shared/fonts/NeutraText-Book.eot') format('embedded-opentype'),
-//   url('../../../mnv-shared/fonts/NeutraText-Book.woff') format('woff'),
-//   url('../../../mnv-shared/fonts/NeutraText-Book.ttf') format('truetype'),
-//   url('../../../mnv-shared/fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
+//   src: url('/bower_components/mnv-shared/fonts/NeutraText-Book.eot');
+//   src: url('/bower_components/mnv-shared/fonts/NeutraText-Book.eot') format('embedded-opentype'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Book.woff') format('woff'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Book.ttf') format('truetype'),
+//   url('/bower_components/mnv-shared/fonts/NeutraText-Book.svg#NeutraText-Book') format('svg');
 //   font-weight: normal;
 //   font-style: normal;
 // }
@@ -36,30 +36,33 @@
 // Changing default color
 $preloader-overlay-color: #000;
 @import '/bower_components/mnv-shared/css/components/preloader/preloader-bars';
+
+$contentMaxWidth: 960px;
+
 .mnv-preloader-overlay {
   opacity: 0.5;
 }
 /// below are the new fonts we need to check the license / usage of these!!!!
 @font-face {
   font-family: Neutra2-Medium;
-  src: url('../../../mnv-shared/fonts/Neutraface2Display-Medium.otf') format('opentype');
+  src: url('/bower_components/mnv-shared/fonts/Neutraface2Display-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: Neutra2-Bold;
-  src: url('../../../mnv-shared/fonts/Neutraface2Display-Bold.otf') format('opentype');
+  src: url('/bower_components/mnv-shared/fonts/Neutraface2Display-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: Neutra2-Titling;
-  src: url('../../../mnv-shared/fonts/Neutraface2Display-Titling.ttf') format('opentype');
+  src: url('/bower_components/mnv-shared/fonts/Neutraface2Display-Titling.ttf') format('opentype');
 }
 
 
 
 @font-face {
   font-family: Neutra2-Light;
-  src: url('../../../mnv-shared/fonts/Neutraface2Display-Light.otf') format('opentype');
+  src: url('/bower_components/mnv-shared/fonts/Neutraface2Display-Light.otf') format('opentype');
 }
 
 
@@ -139,7 +142,7 @@ ul {
 }
 
 .article-container {
-  max-width: 1220px;
+  max-width: $contentMaxWidth;
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -157,6 +160,20 @@ ul {
   border-bottom: 4px solid  #000;
   opacity: 1;
   overflow: hidden;
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .tile-content {
+    max-width: $contentMaxWidth;
+    margin: auto;
+    position: relative;
+  }
 
   .section, .title, .rubrik {
     pointer-events: none;
@@ -233,7 +250,7 @@ ul {
   }
 }
 
-.tile-full {
+.artical-reveal-tile {
   min-width: 100%;
   @include aspect-ratio(4, 1);
 
@@ -257,9 +274,21 @@ ul {
   }
 }
 
-.tile-1 {
+$firstRedTile: 4;
+$firstGreenTile: 10;
+.artical-reveal-tile:nth-of-type(#{$firstRedTile}),
+.artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+.artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+.artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+.artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
+.artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+.artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+.artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
   min-width: 25%;
   border-right: 6px solid #000;
+  @media (max-width: 580px){
+    min-width: 50%;
+  }
   @include aspect-ratio(4, 3);
   .title {
     font-size: 20px;
@@ -271,8 +300,6 @@ ul {
   .section, .rubrik {
     display: none;
   }
-  $firstRedTile: 4;
-  $firstGreenTile: 10;
   // TODO This part need to be reviewed 
   &:nth-of-type(#{$firstRedTile}) .image-tint,
   &:nth-of-type(#{$firstRedTile+1}) .image-tint,
@@ -298,11 +325,11 @@ ul {
   }
 }
 
-.tile-1:nth-child(7){
+.artical-reveal-tile:nth-child(7){
   border-right: 0;
 }
 
-.tile-1:nth-child(13){
+.artical-reveal-tile:nth-child(13){
   border-right: 0;
 }
 
@@ -321,24 +348,36 @@ $transition-delay: 0.2s;
 $tiles: 15;
 // Create delay for tiles
 @for $i from 0 to $tiles {
-  .article-reveal-container ul li:nth-child(#{$i}) {
+  .artical-reveal-tile:nth-child(#{$i}) {
     -webkit-transition-delay:  $transition-delay * $i;
   }
 }
 
+$bgColors: #FFFFFF black red;
+@for $i from 1 through length($bgColors){
+  .article-reveal-container ul li:nth-child(#{$i}) {
+    background-color:  nth( $bgColors, $i);
+  }
+}
+
 .landing {
-  .artical-reveal-tile.tile-full,
-  .artical-reveal-tile.cover {
+  .artical-reveal-tile {
     transform: translate(0%, 0%)
   }
-  .artical-reveal-tile.tile-1 {
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile}),
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
     transform: none;
   }
 }
 
-.article{
-  .artical-reveal-tile.tile-full,
-  .artical-reveal-tile.cover {
+.article {
+  .artical-reveal-tile {
     &:nth-child(odd){
       transform: translate(-100%, 0%)
     }
@@ -346,7 +385,14 @@ $tiles: 15;
       transform: translate(100%, 0%)
     }
   }
-  .artical-reveal-tile.tile-1 {
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile}),
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+  .artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
     &:nth-child(odd){
       transform: translate(-400%, 0%)
     }
@@ -402,3 +448,34 @@ button {
   cursor: pointer;
   background-color: #fff;
 }
+
+.artical-reveal-tile {
+  &:nth-child(1) {
+    @media  (min-width: $contentMaxWidth){
+      max-height: 600px;
+    }
+  }
+  @media  (min-width: $contentMaxWidth){
+      max-height: 300px;
+  }
+  .image {
+    @media  (min-width: $contentMaxWidth){
+      max-width: $contentMaxWidth;
+      right: 0;
+      left: auto;
+    }
+  }
+}
+@media (max-width: 580px){
+  .rubrik {
+    display: none;
+  }
+  .text-part * {
+    position: relative !important;
+    top: auto !important;
+  }
+  .artical-reveal-tile-link {
+    position: relative !important;
+  }
+}
+

@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['css/sass/**/*.{scss,sass}',  '../../css/editorial.scss'],
-        tasks: ['sass:dev']
+        tasks: ['sass:dev','copy:all','copy:bower']
       },
       handlebars: {
         files: ['js/tpl/handlebars/*.handlebars'],
@@ -190,7 +190,8 @@ module.exports = function(grunt) {
     handlebars: {
       all: {
         files: {
-            'js/tpl/template.js': ['js/tpl/handlebars/*.handlebars','../../views/partials/theWorldIf/article.handlebars']
+          //,'../../views/partials/theWorldIf/article.handlebars'
+            'js/tpl/template.js': ['js/tpl/handlebars/*.handlebars','js/tpl/handlebars/partials/theWorldIf/article.handlebars']
         }
       }
     },
@@ -482,7 +483,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-criticalcss');
   // Compile sass and handlebars on the fly.
-  grunt.registerTask('default', ['sass:dev', 'handlebars', 'BundleVariation', 'KeepConfigAligned',  'KeepDataAligned', 'browserSync',  'copy:all', 'copy:bower', 'watch']);
+  grunt.registerTask('default', ['sass:dev', 'handlebars', 'BundleVariation', 'KeepConfigAligned',  'KeepDataAligned',   'copy:all', 'copy:bower', 'browserSync','watch']);
 
    // Unit tests.
   grunt.registerTask('test', ['jasmine']);
