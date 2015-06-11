@@ -36,8 +36,9 @@
 // Changing default color
 $preloader-overlay-color: #000;
 @import '/bower_components/mnv-shared/css/components/preloader/preloader-bars';
+@import '../../../../bower_components/mnv-shared/css/palettes/theworldif-2015';
 
-$contentMaxWidth: 960px;
+//$mainContainerMaxWidth: 1190px;
 
 .mnv-preloader-overlay {
   opacity: 0.5;
@@ -84,7 +85,7 @@ html, body {
   * {
     box-sizing: border-box;
   }
-  ul, li {
+  .article-list, li {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -132,7 +133,7 @@ html, body {
   overflow-x: hidden;
 }
 
-ul {
+.article-list {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -142,7 +143,7 @@ ul {
 }
 
 .article-container {
-  max-width: $contentMaxWidth;
+  max-width: $mainContainerMaxWidth;
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -157,7 +158,7 @@ ul {
   text-align: center;
   flex : 1;
   background-color: rgba(0, 0 , 0, 1);
-  border-bottom: 4px solid  #000;
+  border-bottom: 10px solid  #000;
   opacity: 1;
   overflow: hidden;
   a {
@@ -170,43 +171,54 @@ ul {
     height: 100%;
   }
   .tile-content {
-    max-width: $contentMaxWidth;
+    max-width: $mainContainerMaxWidth;
     margin: auto;
     position: relative;
     width: 100%;
     height: 100%;
   }
-
+  .text-part {
+    padding: 30px;
+    position: absolute;
+    z-index: 2;
+  }
   .section, .title, .rubrik {
     pointer-events: none;
     z-index: 2;
     font-size: 20px;
     color:  #25E3D0;
-    position: absolute;
     text-transform: uppercase;
-    top: 20px;
-    left: 20px;
     text-shadow:  2px 2px 3px rgba(0, 0, 0, 0.5);
     text-align: left;
+    margin: 0;
     @media (max-width: 480px) {
       font-size: 20px
       }
   }
+  .section {
+    font-size: 30px;
+    line-height: 20px;
+    margin-bottom: 5px;
+  }
   .title {
     top: 45px;
-    font-size: 36px;
+    font-size: 48px;
+    line-height: 38px;
     font-family: Neutra2-Titling;
     color: #fff;
+    margin-bottom: 30px;
     @media (max-width: 480px) {
       top: 40px;
       font-size: 30px
       }
   }
   .rubrik {
-    font-size: 20px;
+    font-size: 30px;
+    line-height: 30px;
     top: 90px;
     text-transform: initial;
     color: #fff;
+    max-width: 400px;
   }
   .image {
     position: absolute;
@@ -243,7 +255,7 @@ ul {
 }
 
 // Cover
-.article-reveal-container ul li:nth-child(1){
+.article-reveal-container .article-list .artical-reveal-tile:nth-child(1){
   @include aspect-ratio(16, 9);
   min-width: 100%;
   .rubrik,
@@ -274,6 +286,25 @@ ul {
     height: 100%;
     opacity: 0.8;
   }
+  // Sections colors
+  // Green section
+  &:nth-child(8){
+    .section {
+      color: $color-section-politics;
+    }
+  }
+  // Red section
+  &:nth-child(3){
+    .section {
+      color: $color-section-business;
+    }
+  }
+  // Orange section
+  &:nth-child(2){
+    .section {
+      color: $color-section-science;
+    }
+  }
 }
 
 $firstRedTile: 4;
@@ -286,7 +317,14 @@ $firstGreenTile: 10;
 .artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
 .artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
 .artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
-  min-width: 25%;
+  @media (max-width: $mainContainerMaxWidth){
+    min-width: 25%;
+  }
+  @media (min-width: $mainContainerMaxWidth - 1px){
+    width: $mainContainerMaxWidth/4;
+    max-width: $mainContainerMaxWidth/4;
+    min-width: initial !important;
+  }
   border-right: 6px solid #000;
   @media (max-width: 580px){
     min-width: 50%;
@@ -301,6 +339,16 @@ $firstGreenTile: 10;
   }
   .section, .rubrik {
     display: none;
+  }
+  .text-part {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    .title {
+      margin: 0;
+      line-height: 24px;
+      font-size: 28px
+    }
   }
   // TODO This part need to be reviewed 
   &:nth-of-type(#{$firstRedTile}) .image-tint,
@@ -357,7 +405,7 @@ $tiles: 15;
 
 $bgColors: #FFFFFF black red;
 @for $i from 1 through length($bgColors){
-  .article-reveal-container ul li:nth-child(#{$i}) {
+  .article-reveal-container .article-list .artical-reveal-tile:nth-child(#{$i}) {
     background-color:  nth( $bgColors, $i);
   }
 }
@@ -453,20 +501,20 @@ button {
 
 .artical-reveal-tile {
   &:nth-child(1) {
-    @media  (min-width: $contentMaxWidth){
+    @media  (min-width: $mainContainerMaxWidth){
       max-height: 600px;
     }
   }
-  @media  (min-width: $contentMaxWidth){
-      max-height: 300px;
+  @media  (min-width: $mainContainerMaxWidth){
+      max-height: 400px;
   }
-  .image {
-    @media  (min-width: $contentMaxWidth){
-      max-width: $contentMaxWidth;
-      right: 0;
-      left: auto;
-    }
-  }
+  // .image {
+  //   @media  (min-width: $mainContainerMaxWidth){
+  //     max-width: $mainContainerMaxWidth;
+  //     right: 0;
+  //     left: auto;
+  //   }
+  // }
 }
 @media (max-width: 580px){
   .rubrik {
