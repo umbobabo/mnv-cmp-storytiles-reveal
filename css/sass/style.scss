@@ -181,6 +181,9 @@ html, body {
     padding: 30px;
     position: absolute;
     z-index: 2;
+    @media (max-width: 568px) {
+      padding: 20px 14px; 
+    }
   }
   .section, .title, .rubrik {
     pointer-events: none;
@@ -191,14 +194,18 @@ html, body {
     text-shadow:  2px 2px 3px rgba(0, 0, 0, 0.5);
     text-align: left;
     margin: 0;
-    @media (max-width: 480px) {
+    @media (max-width: 568px) {
       font-size: 20px
-      }
+    }
   }
   .section {
     font-size: 30px;
     line-height: 20px;
     margin-bottom: 5px;
+    @media (max-width: 568px) {
+      font-size: 16px;
+      line-height: 1;
+    }
   }
   .title {
     top: 45px;
@@ -207,18 +214,47 @@ html, body {
     font-family: Neutra2-Titling;
     color: #fff;
     margin-bottom: 30px;
-    @media (max-width: 480px) {
+    @media (max-width: 568px) {
       top: 40px;
       font-size: 30px
-      }
+    }
+    @media (max-width: 961px) {
+      margin-bottom: 0;
+      font-size: 34px;
+    }
   }
+
+  // Use variables to calculate visible rows
+  $rubrik-font-size: 30px;
+  $rubrik-line-height: 1;
+  $rubrik-lines-to-show: 2;
+
   .rubrik {
-    font-size: 30px;
-    line-height: 30px;
-    top: 90px;
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: $rubrik-font-size*$rubrik-line-height*$rubrik-lines-to-show; /* Fallback for non-webkit */
+    margin: 0 auto;
+    font-size: $rubrik-font-size;
+    line-height: $rubrik-line-height;
+    -webkit-line-clamp: $rubrik-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-transform: initial;
     color: #fff;
-    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media (max-width: 760px) {
+      display: none;
+    }
+    @media (min-width: 961px) {
+      max-width: 550px;
+      max-height: initial;
+      height: auto;
+      max-height: initial;
+      overflow: visible;
+      display: block;
+    }
   }
   .image {
     position: absolute;
@@ -258,9 +294,39 @@ html, body {
 .article-reveal-container .article-list .artical-reveal-tile:nth-child(1){
   @include aspect-ratio(16, 9);
   min-width: 100%;
-  .rubrik,
-  .section {
-    display: block;
+  .text-part {
+    bottom: 0;
+    .rubrik {
+      display: block;
+      font-family: Neutra2-Titling;
+      font-size: 48px;
+      line-height: 38px;
+      @media (min-width: 961px) {
+        max-width: initial; 
+      }
+      @media (max-width: 961px) {
+        font-size: 32px;
+        line-height: 35px;
+      }
+    }
+    .section {
+      display: none;
+    }
+    .title {
+      font-size: 50px;
+      line-height: 44px;
+      font-family: Neutra2-Medium;
+      margin-bottom: 12px;
+      @media (max-width: 961px) {
+        font-size: 35px;
+        line-height: 35px;
+      }
+      @media (max-width: 568px) {
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: 0.05px;
+      }
+    }
   }
 }
 
@@ -321,18 +387,41 @@ $firstGreenTile: 10;
     min-width: 25%;
   }
   @media (min-width: $mainContainerMaxWidth - 1px){
-    width: $mainContainerMaxWidth/4;
-    max-width: $mainContainerMaxWidth/4;
-    min-width: initial !important;
+    .artical-reveal-tile-link,
+    &.artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+    &.artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}) {
+        width: $mainContainerMaxWidth/4;
+        max-width: $mainContainerMaxWidth/4;
+        min-width: initial !important;
+        max-height: 220px;
+    }
+    &.artical-reveal-tile:nth-of-type(#{$firstRedTile}) .artical-reveal-tile-link,
+    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile}) .artical-reveal-tile-link {
+      left: auto !important;
+    }
+    &.artical-reveal-tile:nth-of-type(#{$firstRedTile}),
+    &.artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
+    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+        //width: $mainContainerMaxWidth/4;
+        max-width: 100%;
+        min-width: initial !important;
+        max-height: 220px;
+    }
+    .artical-reveal-tile-link {
+      overflow: hidden;
+    }
   }
   border-right: 6px solid #000;
-  @media (max-width: 580px){
+  @media (max-width: 568px){
     min-width: 50%;
   }
   @include aspect-ratio(4, 3);
   .title {
     font-size: 20px;
-    @media (max-width: 480px) {
+    @media (max-width: 568px) {
       top: 16px;
       font-size: 16px
     }
@@ -403,12 +492,12 @@ $tiles: 15;
   }
 }
 
-$bgColors: #FFFFFF black red;
-@for $i from 1 through length($bgColors){
-  .article-reveal-container .article-list .artical-reveal-tile:nth-child(#{$i}) {
-    background-color:  nth( $bgColors, $i);
-  }
-}
+// $bgColors: #FFFFFF black red;
+// @for $i from 1 through length($bgColors){
+//   .article-reveal-container .article-list .artical-reveal-tile:nth-child(#{$i}) {
+//     background-color:  nth( $bgColors, $i);
+//   }
+// }
 
 .landing {
   .artical-reveal-tile {
@@ -516,16 +605,16 @@ button {
   //   }
   // }
 }
-@media (max-width: 580px){
-  .rubrik {
-    display: none;
-  }
-  .text-part * {
-    position: relative !important;
-    top: auto !important;
-  }
-  .artical-reveal-tile-link {
-    position: relative !important;
-  }
-}
+// @media (max-width: 568px){
+//   .rubrik {
+//     display: none;
+//   }
+//   .text-part * {
+//     position: relative !important;
+//     top: auto !important;
+//   }
+//   .artical-reveal-tile-link {
+//     position: relative !important;
+//   }
+// }
 
