@@ -3,7 +3,7 @@ var template = Handlebars.template, templates = Handlebars.templates = Handlebar
 templates['ec-storytilesreveal'] = template({"1":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "      <div class=\"artical-reveal-tile "
+  return "      <div class=\"article-reveal-tile "
     + alias3(((helper = (helper = helpers.animate || (depth0 != null ? depth0.animate : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"animate","hash":{},"data":data}) : helper)))
     + "\" data-id=\""
     + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
@@ -11,7 +11,7 @@ templates['ec-storytilesreveal'] = template({"1":function(depth0,helpers,partial
     + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
     + "\">\n        <a href=\""
     + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"url","hash":{},"data":data}) : helper)))
-    + "\" class=\"artical-reveal-tile-link\">\n          <div class=\"tile-content\">\n            <div class=\"text-part\">\n              <h2 class=\"section\">"
+    + "\" class=\"article-reveal-tile-link\">\n          <div class=\"tile-content\">\n            <div class=\"text-part\">\n              <h2 class=\"section\">"
     + alias3(((helper = (helper = helpers.section || (depth0 != null ? depth0.section : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"section","hash":{},"data":data}) : helper)))
     + "</h2>\n              <h2 class=\"title\">"
     + ((stack1 = ((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper))) != null ? stack1 : "")

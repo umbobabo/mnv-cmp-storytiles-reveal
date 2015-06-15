@@ -85,11 +85,13 @@ html, body {
   * {
     box-sizing: border-box;
   }
-  .article-list, li {
-    list-style: none;
+  .article-list {
     margin: 0;
     padding: 0;
   }
+  // TODO this padding at the moment is related to the height of the MH
+  // padding-bottom: 70px;
+  box-sizing: border-box;
 }
 
 *, *:before, *:after {
@@ -128,18 +130,27 @@ html, body {
   width: 100%;
   height: 100%;
   transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
   perspective: 4000px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .article-list {
-  display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
   display: flex;
-  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
 .article-container {
@@ -150,18 +161,23 @@ html, body {
   overflow-y: scroll;
 }
 
-.artical-reveal-tile {
+.article-reveal-tile {
   cursor: pointer;
   position: relative;
   color: #fff;
   font-size: 20px;
   text-align: center;
-  flex : 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
   background-color: rgba(0, 0 , 0, 1);
   border-bottom: 10px solid  #000;
   opacity: 1;
   overflow: hidden;
-  a {
+  @media (max-width: 568px) {
+    min-height: 230px;
+  }
+  .article-reveal-tile-link {
     position: absolute;
     top: 0;
     left: 0;
@@ -169,6 +185,8 @@ html, body {
     bottom: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    cursor: pointer;
   }
   .tile-content {
     max-width: $mainContainerMaxWidth;
@@ -181,8 +199,11 @@ html, body {
     padding: 30px;
     position: absolute;
     z-index: 2;
+    @media (max-width: 961px) {
+      padding: 24px 30px 10px;
+    }
     @media (max-width: 568px) {
-      padding: 20px 14px; 
+      padding: 20px 14px;
     }
   }
   .section, .title, .rubrik {
@@ -194,17 +215,17 @@ html, body {
     text-shadow:  2px 2px 3px rgba(0, 0, 0, 0.5);
     text-align: left;
     margin: 0;
-    @media (max-width: 568px) {
+    @media (max-width: 961px) {
       font-size: 20px
     }
   }
   .section {
-    font-size: 30px;
+    font-size: 26px;
     line-height: 20px;
     margin-bottom: 5px;
-    @media (max-width: 568px) {
-      font-size: 16px;
-      line-height: 1;
+    @media (max-width: 961px) {
+      font-size: 22px;
+      line-height: 22px;
     }
   }
   .title {
@@ -214,9 +235,10 @@ html, body {
     font-family: Neutra2-Titling;
     color: #fff;
     margin-bottom: 30px;
-    @media (max-width: 568px) {
+    @media (max-width: 961px) {
       top: 40px;
-      font-size: 30px
+      font-size: 30px;
+      line-height: 30px;
     }
     @media (max-width: 961px) {
       margin-bottom: 0;
@@ -233,7 +255,7 @@ html, body {
     display: block; /* Fallback for non-webkit */
     display: -webkit-box;
     height: $rubrik-font-size*$rubrik-line-height*$rubrik-lines-to-show; /* Fallback for non-webkit */
-    margin: 0 auto;
+    margin: 0;
     font-size: $rubrik-font-size;
     line-height: $rubrik-line-height;
     -webkit-line-clamp: $rubrik-lines-to-show;
@@ -255,6 +277,11 @@ html, body {
       overflow: visible;
       display: block;
     }
+    @media (max-width: 961px) {
+      font-size: 22px;
+      line-height: 22px;
+      margin-top: 20px;
+    }
   }
   .image {
     position: absolute;
@@ -266,12 +293,23 @@ html, body {
     -moz-transition: all 0.8s ease-in-out;
     -o-transition: all 0.8s ease-in-out;
     transition: all 0.8s ease-in-out;
+    @media (max-width: 568px) {
+      transform: scale(2);
+      -webkit-transform: scale(2);
+      transform-origin: top;
+      -webkit-transform-origin: top;
+    }
+  }
+
+  &:hover   .image {
+    @media (min-width: 568px) {
+      transform:scale(1.2,1.2);
+      -webkit-transform:scale(1.2,1.2);
+    }
   }
 }
 
-.image:hover {
-  transform:scale(1.2,1.2);
-}
+
 
 @mixin aspect-ratio($width, $height) {
   position: relative;
@@ -291,7 +329,7 @@ html, body {
 }
 
 // Cover
-.article-reveal-container .article-list .artical-reveal-tile:nth-child(1){
+.article-reveal-container .article-list .article-reveal-tile:nth-child(1){
   @include aspect-ratio(16, 9);
   min-width: 100%;
   .text-part {
@@ -301,12 +339,15 @@ html, body {
       font-family: Neutra2-Titling;
       font-size: 48px;
       line-height: 38px;
-      @media (min-width: 961px) {
-        max-width: initial; 
-      }
+      max-width: initial;
       @media (max-width: 961px) {
+        max-width: initial;
         font-size: 32px;
         line-height: 35px;
+      }
+      @media (max-width: 568px) {
+        font-size: 30px;
+        line-height: 30px;
       }
     }
     .section {
@@ -322,16 +363,16 @@ html, body {
         line-height: 35px;
       }
       @media (max-width: 568px) {
-        font-size: 28px;
-        line-height: 32px;
+        font-size: 22px;
+        line-height: 22px;
         letter-spacing: 0.05px;
       }
     }
   }
 }
 
-.artical-reveal-tile {
-  min-width: 100%;
+.article-reveal-tile {
+  //min-width: 100%;
   @include aspect-ratio(4, 1);
 
   .image-grad {
@@ -375,57 +416,60 @@ html, body {
 
 $firstRedTile: 4;
 $firstGreenTile: 10;
-.artical-reveal-tile:nth-of-type(#{$firstRedTile}),
-.artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-.artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-.artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-.artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
-.artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
-.artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
-.artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+.article-reveal-tile:nth-of-type(#{$firstRedTile}),
+.article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+.article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+.article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+.article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+.article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+.article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+.article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+  -webkit-flex: 1 1 25%;
+  -ms-flex: 1 1 25%;
+  flex: 1 1 25%;
   @media (max-width: $mainContainerMaxWidth){
     min-width: 25%;
   }
+  @media (max-width: 568px) {
+    min-height: initial !important;
+    max-height: 200px;
+  }
   @media (min-width: $mainContainerMaxWidth - 1px){
-    .artical-reveal-tile-link,
-    &.artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-    &.artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
-    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}) {
+    .article-reveal-tile-link,
+    &.article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+    &.article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+    &.article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+    &.article-reveal-tile:nth-of-type(#{$firstGreenTile+2}) {
         width: $mainContainerMaxWidth/4;
         max-width: $mainContainerMaxWidth/4;
         min-width: initial !important;
         max-height: 220px;
     }
-    &.artical-reveal-tile:nth-of-type(#{$firstRedTile}) .artical-reveal-tile-link,
-    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile}) .artical-reveal-tile-link {
+    &.article-reveal-tile:nth-of-type(#{$firstRedTile}) .article-reveal-tile-link,
+    &.article-reveal-tile:nth-of-type(#{$firstGreenTile}) .article-reveal-tile-link {
       left: auto !important;
     }
-    &.artical-reveal-tile:nth-of-type(#{$firstRedTile}),
-    &.artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
-    &.artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+    &.article-reveal-tile:nth-of-type(#{$firstRedTile}),
+    &.article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+    &.article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+    &.article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
         //width: $mainContainerMaxWidth/4;
         max-width: 100%;
         min-width: initial !important;
         max-height: 220px;
     }
-    .artical-reveal-tile-link {
-      overflow: hidden;
-    }
   }
   border-right: 6px solid #000;
-  @media (max-width: 568px){
+  @media (max-width: 759px){
     min-width: 50%;
-  }
-  @include aspect-ratio(4, 3);
-  .title {
-    font-size: 20px;
-    @media (max-width: 568px) {
-      top: 16px;
-      font-size: 16px
+    -webkit-flex: 1 1 50%;
+    -ms-flex: 1 1 50%;
+    flex: 1 1 50%;
+    .image {
+      transform: none;
     }
   }
+  @include aspect-ratio(4, 3);
   .section, .rubrik {
     display: none;
   }
@@ -436,10 +480,19 @@ $firstGreenTile: 10;
     .title {
       margin: 0;
       line-height: 24px;
-      font-size: 28px
+      font-size: 28px;
+      @media (max-width: 961px) {
+        font-size: 24px;
+        line-height: 20px;
+      }
+      @media (max-width: 568px) {
+        top: 16px;
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
   }
-  // TODO This part need to be reviewed 
+  // TODO This part need to be reviewed
   &:nth-of-type(#{$firstRedTile}) .image-tint,
   &:nth-of-type(#{$firstRedTile+1}) .image-tint,
   &:nth-of-type(#{$firstRedTile+2}) .image-tint,
@@ -464,80 +517,95 @@ $firstGreenTile: 10;
   }
 }
 
-.artical-reveal-tile:nth-child(7){
+.article-reveal-tile:nth-child(7){
   border-right: 0;
 }
 
-.artical-reveal-tile:nth-child(13){
+.article-reveal-tile:nth-child(13){
   border-right: 0;
 }
 
 // Animation
 // Start on change class applied to the container
-$transition-duration: 0.7s;
+$transition-duration: 0.5s;
 $transition-delay: 0.2s;
-.artical-reveal-tile {
-  // TODO add other prefix
+.article-reveal-tile {
   -webkit-transition-property: all;
   -webkit-transition-duration: $transition-duration;
   -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-delay: initial;
+  -webkit-transition-delay: $transition-delay;
+  -ms-transition-property: all;
+  -ms-transition-duration: $transition-duration;
+  -ms-transition-timing-function: ease-in-out;
+  -ms-transition-delay: $transition-delay;
+  transition-property: all;
+  transition-duration: $transition-duration;
+  transition-timing-function: ease-in-out;
+  transition-delay: $transition-delay;
 }
 
-$tiles: 15;
-// Create delay for tiles
-@for $i from 0 to $tiles {
-  .artical-reveal-tile:nth-child(#{$i}) {
-    -webkit-transition-delay:  $transition-delay * $i;
-  }
-}
-
-// $bgColors: #FFFFFF black red;
-// @for $i from 1 through length($bgColors){
-//   .article-reveal-container .article-list .artical-reveal-tile:nth-child(#{$i}) {
-//     background-color:  nth( $bgColors, $i);
+// Use this mixing if you want apply a wave effects with a delay
+// $tiles: 15;
+// // Create delay for tiles
+// @for $i from 0 to $tiles {
+//   .article-reveal-tile:nth-child(#{$i}) {
+//     @if ($i <= $firstRedTile) and ($i > ($firstRedTile+3)) {
+//       -webkit-transition-delay:  $transition-delay * $i;
+//     } else {
+//       -webkit-transition-delay:  $transition-delay * $firstRedTile;
+//     }
 //   }
 // }
 
 .landing {
-  .artical-reveal-tile {
+  .article-reveal-tile {
     transform: translate(0%, 0%)
   }
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile}),
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+  &.animation-end .article-reveal-container {
+    background: black;
+  }
+  .article-reveal-tile:nth-of-type(#{$firstRedTile}),
+  .article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+  .article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+  .article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
     transform: none;
+    -webkit-transform: none;
+    -ms-transform: none;
   }
 }
 
 .article {
-  .artical-reveal-tile {
+  .article-reveal-tile {
     &:nth-child(odd){
-      transform: translate(-100%, 0%)
+      transform: translate(-100%, 0%);
+      -webkit-transform: translate(-100%, 0%);
+      -ms-transform: translate(-100%, 0%);
     }
     &:nth-child(even){
-      transform: translate(100%, 0%)
+      transform: translate(100%, 0%);
+      -webkit-transform: translate(100%, 0%);
+      -ms-transform: translate(100%, 0%);
     }
   }
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile}),
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-  .artical-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
-  .artical-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
-    &:nth-child(odd){
-      transform: translate(-400%, 0%)
-    }
-    &:nth-child(even){
-      transform: translate(400%, 0%)
-    }
+  .article-reveal-tile:nth-of-type(#{$firstRedTile}),
+  .article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile+1}) {
+    transform: translate(-400%, 0%);
+    -webkit-transform: translate(-400%, 0%);
+    -ms-transform: translate(-400%, 0%);
+  }
+  .article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+  .article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+  .article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+    transform: translate(400%, 0%);
+    -webkit-transform: translate(400%, 0%);
+    -ms-transform: translate(400%, 0%);
   }
   .article-reveal-container {
     pointer-events: none;
@@ -588,7 +656,7 @@ button {
   background-color: #fff;
 }
 
-.artical-reveal-tile {
+.article-reveal-tile {
   &:nth-child(1) {
     @media  (min-width: $mainContainerMaxWidth){
       max-height: 600px;
@@ -597,24 +665,5 @@ button {
   @media  (min-width: $mainContainerMaxWidth){
       max-height: 400px;
   }
-  // .image {
-  //   @media  (min-width: $mainContainerMaxWidth){
-  //     max-width: $mainContainerMaxWidth;
-  //     right: 0;
-  //     left: auto;
-  //   }
-  // }
 }
-// @media (max-width: 568px){
-//   .rubrik {
-//     display: none;
-//   }
-//   .text-part * {
-//     position: relative !important;
-//     top: auto !important;
-//   }
-//   .artical-reveal-tile-link {
-//     position: relative !important;
-//   }
-// }
 
