@@ -104,68 +104,60 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  -webkit-font-smoothing: antialiased !important; }
+  overflow: hidden; }
 
 .mnv-ec-storytilesreveal {
+  -webkit-font-smoothing: antialiased !important;
   height: 100%;
   font-family: Neutra2-Medium;
   box-sizing: border-box; }
-  .mnv-ec-storytilesreveal * {
-    box-sizing: border-box; }
   .mnv-ec-storytilesreveal .article-list {
     margin: 0;
     padding: 0; }
-
-*, *:before, *:after {
-  box-sizing: inherit; }
-
-.main-container {
-  position: relative;
-  margin: 0 auto;
-  height: 100%; }
-
-.depth-top {
-  z-index: 1000; }
-
-.depth-bottom {
-  z-index: 1; }
-
-.active {
-  visibility: visible !important;
-  overflow-y: scroll !important; }
-
-.inactive, .no-js .article .article-reveal-container {
-  visibility: hidden !important;
-  overflow: hidden !important; }
-
-.article-reveal-container {
-  display: block;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transform: translate(0%, 0%);
-  -webkit-transform: translate(0%, 0%);
-  perspective: 4000px;
-  overflow-y: scroll;
-  overflow-x: hidden; }
-
-.article-list {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  height: 100%; }
+  .mnv-ec-storytilesreveal *, .mnv-ec-storytilesreveal *:before, .mnv-ec-storytilesreveal *:after {
+    box-sizing: border-box; }
+  .mnv-ec-storytilesreveal .main-container {
+    position: relative;
+    margin: 0 auto;
+    height: 100%; }
+  .mnv-ec-storytilesreveal .depth-top {
+    z-index: 1000; }
+  .mnv-ec-storytilesreveal .depth-bottom {
+    z-index: 1; }
+  .mnv-ec-storytilesreveal .active {
+    visibility: visible !important;
+    overflow-y: scroll !important; }
+  .mnv-ec-storytilesreveal .inactive, .mnv-ec-storytilesreveal .no-js .article .article-reveal-container {
+    visibility: hidden !important;
+    overflow: hidden !important; }
+  .mnv-ec-storytilesreveal .article-reveal-container {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 0%);
+    perspective: 4000px;
+    overflow-y: scroll;
+    overflow-x: hidden; }
+  .mnv-ec-storytilesreveal .article-list {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 100%; }
 
 .article-container {
   max-width: 1190px;
@@ -200,6 +192,9 @@ html, body {
     height: 100%;
     overflow: hidden;
     cursor: pointer; }
+    .article-reveal-tile .article-reveal-tile-link:visited {
+      border: none;
+      text-decoration: none; }
   .article-reveal-tile .tile-content {
     max-width: 1190px;
     margin: auto;
@@ -403,6 +398,11 @@ html, body {
   flex: 1 1 25%;
   border-right: 6px solid #000;
   position: relative; }
+  .no-flexbox .article-reveal-tile:nth-of-type(4), .no-flexbox .article-reveal-tile:nth-of-type(5), .no-flexbox .article-reveal-tile:nth-of-type(6), .no-flexbox .article-reveal-tile:nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(10), .no-flexbox .article-reveal-tile:nth-of-type(11), .no-flexbox .article-reveal-tile:nth-of-type(12), .no-flexbox .article-reveal-tile:nth-of-type(13) {
+    width: 25%;
+    float: left; }
+  .no-flexbox .article-reveal-tile:nth-of-type(4):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(4):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(5):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(5):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(6):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(6):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(7):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(7):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(10):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(10):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(11):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(11):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(12):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(12):nth-of-type(13), .no-flexbox .article-reveal-tile:nth-of-type(13):nth-of-type(7), .no-flexbox .article-reveal-tile:nth-of-type(13):nth-of-type(13) {
+    float: none; }
   @media (max-width: 1190px) {
     .article-reveal-tile:nth-of-type(4), .article-reveal-tile:nth-of-type(5), .article-reveal-tile:nth-of-type(6), .article-reveal-tile:nth-of-type(7), .article-reveal-tile:nth-of-type(10), .article-reveal-tile:nth-of-type(11), .article-reveal-tile:nth-of-type(12), .article-reveal-tile:nth-of-type(13) {
       min-width: 25%; } }
