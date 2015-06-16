@@ -6,6 +6,8 @@ $preloader-overlay-color: #000;
 @import '../../../../bower_components/mnv-shared/css/palettes/theworldif-2015';
 
 //$mainContainerMaxWidth: 1190px;
+$firstRedTile: 4;
+$firstGreenTile: 10;
 
 .mnv-preloader-overlay {
   opacity: 0.5;
@@ -32,7 +34,6 @@ $preloader-overlay-color: #000;
 }
 
 // TODO remove styles not releated to the widget ad wrap everything into the widget NS
-
 html, body {
   width: 100%;
   height: 100%;
@@ -41,6 +42,22 @@ html, body {
   overflow: hidden;
 }
 
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
 
 .mnv-ec-storytilesreveal {
   -webkit-font-smoothing: antialiased !important;
@@ -109,432 +126,247 @@ html, body {
     flex-wrap: wrap;
     height: 100%;
   }
-}
-
-
-.article-container {
-  max-width: $mainContainerMaxWidth;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  overflow-y: scroll;
-}
-
-.article-reveal-tile {
-  cursor: pointer;
-  position: relative;
-  color: #fff;
-  font-size: 20px;
-  text-align: center;
-  -webkit-flex: 1 1 100%;
-  -ms-flex: 1 1 100%;
-  flex: 1 1 100%;
-  background-color: rgba(0, 0 , 0, 1);
-  border-bottom: 10px solid  #000;
-  opacity: 1;
-  overflow: hidden;
-  @media (max-width: 568px) {
-    min-height: 230px;
-  }
-  .article-reveal-tile-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    cursor: pointer;
-    &:visited {
-      border: none;
-      text-decoration: none;
-    }
-  }
-  .tile-content {
+  .article-container {
     max-width: $mainContainerMaxWidth;
-    margin: auto;
-    position: relative;
-    width: 100%;
     height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    overflow-y: scroll;
   }
-  .text-part {
-    padding: 30px;
-    position: absolute;
-    z-index: 2;
-    @media (max-width: 961px) {
-      padding: 24px 30px 10px;
-    }
-    @media (max-width: 568px) {
-      padding: 20px 14px;
-    }
-  }
-  .section, .title, .rubrik {
-    pointer-events: none;
-    z-index: 2;
+
+  .article-reveal-tile {
+    cursor: pointer;
+    position: relative;
+    color: #fff;
     font-size: 20px;
-    color:  #25E3D0;
-    text-transform: uppercase;
-    text-shadow:  2px 2px 3px rgba(0, 0, 0, 0.5);
-    text-align: left;
-    margin: 0;
-    @media (max-width: 961px) {
-      font-size: 20px
-    }
-  }
-  .section {
-    font-size: 26px;
-    line-height: 20px;
-    margin-bottom: 5px;
-    @media (max-width: 961px) {
-      font-size: 22px;
-      line-height: 22px;
-    }
-  }
-  .title {
-    top: 45px;
-    font-size: 48px;
-    line-height: 38px;
-    font-family: Neutra2-Titling;
-    color: #fff;
-    margin-bottom: 30px;
-    @media (max-width: 961px) {
-      top: 40px;
-      font-size: 30px;
-      line-height: 30px;
-    }
-    @media (max-width: 961px) {
-      margin-bottom: 0;
-      font-size: 34px;
-    }
-  }
-
-  // Use variables to calculate visible rows
-  $rubrik-font-size: 30px;
-  $rubrik-line-height: 1;
-  $rubrik-lines-to-show: 2;
-
-  .rubrik {
-    display: block; /* Fallback for non-webkit */
-    display: -webkit-box;
-    height: $rubrik-font-size*$rubrik-line-height*$rubrik-lines-to-show; /* Fallback for non-webkit */
-    margin: 0;
-    font-size: $rubrik-font-size;
-    line-height: $rubrik-line-height;
-    -webkit-line-clamp: $rubrik-lines-to-show;
-    -webkit-box-orient: vertical;
+    text-align: center;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    background-color: rgba(0, 0 , 0, 1);
+    border-bottom: 10px solid  #000;
+    opacity: 1;
     overflow: hidden;
-    text-overflow: ellipsis;
-    text-transform: initial;
-    color: #fff;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    @media (max-width: 760px) {
-      display: none;
-    }
-    @media (min-width: 961px) {
-      max-width: 550px;
-      max-height: initial;
-      height: auto;
-      max-height: initial;
-      overflow: visible;
-      display: block;
-    }
-    @media (max-width: 961px) {
-      font-size: 22px;
-      line-height: 22px;
-      margin-top: 20px;
-    }
-  }
-  .image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    -webkit-transition: all 0.8s ease-in-out;
-    -moz-transition: all 0.8s ease-in-out;
-    -o-transition: all 0.8s ease-in-out;
-    transition: all 0.8s ease-in-out;
     @media (max-width: 568px) {
-      transform: scale(2);
-      -webkit-transform: scale(2);
-      transform-origin: top;
-      -webkit-transform-origin: top;
+      min-height: 230px;
     }
-  }
-
-  &:hover   .image {
-    @media (min-width: 568px) {
-      transform:scale(1.2,1.2);
-      -webkit-transform:scale(1.2,1.2);
+    .article-reveal-tile-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      &:visited {
+        border: none;
+        text-decoration: none;
+      }
     }
-  }
-}
-
-
-
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
-
-// Cover
-.article-reveal-container .article-list .article-reveal-tile:nth-child(1){
-  @include aspect-ratio(16, 9);
-  min-width: 100%;
-  .text-part {
-    bottom: 0;
-    .rubrik {
-      display: block;
-      font-family: Neutra2-Titling;
-      font-size: 48px;
-      line-height: 38px;
-      max-width: initial;
+    .tile-content {
+      max-width: $mainContainerMaxWidth;
+      margin: auto;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .text-part {
+      padding: 30px;
+      position: absolute;
+      z-index: 2;
       @media (max-width: 961px) {
-        max-width: initial;
-        font-size: 32px;
-        line-height: 35px;
+        padding: 24px 30px 10px;
       }
       @media (max-width: 568px) {
+        padding: 20px 14px;
+      }
+    }
+    .section, .title, .rubrik {
+      pointer-events: none;
+      z-index: 2;
+      font-size: 20px;
+      color:  #25E3D0;
+      text-transform: uppercase;
+      text-shadow:  2px 2px 3px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      margin: 0;
+      @media (max-width: 961px) {
+        font-size: 20px
+      }
+    }
+    .section {
+      font-size: 26px;
+      line-height: 20px;
+      margin-bottom: 5px;
+      @media (max-width: 961px) {
+        font-size: 22px;
+        line-height: 22px;
+      }
+    }
+    .title {
+      top: 45px;
+      font-size: 48px;
+      line-height: 38px;
+      font-family: Neutra2-Titling;
+      color: #fff;
+      margin-bottom: 30px;
+      @media (max-width: 961px) {
+        top: 40px;
         font-size: 30px;
         line-height: 30px;
       }
-    }
-    .section {
-      display: none;
-    }
-    .title {
-      font-size: 50px;
-      line-height: 44px;
-      font-family: Neutra2-Medium;
-      margin-bottom: 12px;
       @media (max-width: 961px) {
-        font-size: 35px;
-        line-height: 35px;
+        margin-bottom: 0;
+        font-size: 34px;
       }
-      @media (max-width: 568px) {
+    }
+
+    // Use variables to calculate visible rows
+    $rubrik-font-size: 30px;
+    $rubrik-line-height: 1;
+    $rubrik-lines-to-show: 2;
+
+    .rubrik {
+      display: block; /* Fallback for non-webkit */
+      display: -webkit-box;
+      height: $rubrik-font-size*$rubrik-line-height*$rubrik-lines-to-show; /* Fallback for non-webkit */
+      margin: 0;
+      font-size: $rubrik-font-size;
+      line-height: $rubrik-line-height;
+      -webkit-line-clamp: $rubrik-lines-to-show;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: initial;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @media (max-width: 760px) {
+        display: none;
+      }
+      @media (min-width: 961px) {
+        max-width: 550px;
+        max-height: initial;
+        height: auto;
+        max-height: initial;
+        overflow: visible;
+        display: block;
+      }
+      @media (max-width: 961px) {
         font-size: 22px;
         line-height: 22px;
-        letter-spacing: 0.05px;
+        margin-top: 20px;
       }
     }
-  }
-}
-
-.article-reveal-tile {
-  //min-width: 100%;
-  @include aspect-ratio(4, 1);
-
-  .image-grad {
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-    background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
-    background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 60%;
-    height: 100%;
-    opacity: 0.8;
-  }
-  // Sections colors
-  // Green section
-  &:nth-child(8){
-    .section {
-      color: $color-section-politics;
-    }
-  }
-  // Red section
-  &:nth-child(3){
-    .section {
-      color: $color-section-business;
-    }
-  }
-  // Orange section
-  &:nth-child(2){
-    .section {
-      color: $color-section-science;
-    }
-  }
-}
-
-$firstRedTile: 4;
-$firstGreenTile: 10;
-
-.article-reveal-tile:nth-of-type(#{$firstRedTile}),
-.article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-.article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-.article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-.article-reveal-tile:nth-of-type(#{$firstGreenTile}),
-.article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
-.article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
-.article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
-  -webkit-flex: 1 1 25%;
-  -ms-flex: 1 1 25%;
-  flex: 1 1 25%;
-  .no-flexbox & {
-    width: 25%;
-    float: left;
-  }
-  .no-flexbox &:nth-of-type(#{$firstRedTile+3}),
-  .no-flexbox &:nth-of-type(#{$firstGreenTile+3}) {
-    float: none;
-  }
-  @media (max-width: $mainContainerMaxWidth){
-    min-width: 25%;
-  }
-  @media (max-width: 568px) {
-    min-height: initial !important;
-    max-height: 200px;
-  }
-  @media (min-width: $mainContainerMaxWidth - 1px){
-    .article-reveal-tile-link,
-    &.article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-    &.article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-    &.article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
-    &.article-reveal-tile:nth-of-type(#{$firstGreenTile+2}) {
-        width: $mainContainerMaxWidth/4;
-        max-width: $mainContainerMaxWidth/4;
-        min-width: initial !important;
-        max-height: 220px;
-    }
-    &.article-reveal-tile:nth-of-type(#{$firstRedTile}) .article-reveal-tile-link,
-    &.article-reveal-tile:nth-of-type(#{$firstGreenTile}) .article-reveal-tile-link {
-      left: auto !important;
-    }
-    &.article-reveal-tile:nth-of-type(#{$firstRedTile}),
-    &.article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-    &.article-reveal-tile:nth-of-type(#{$firstGreenTile}),
-    &.article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
-        //width: $mainContainerMaxWidth/4;
-        max-width: 100%;
-        min-width: initial !important;
-        max-height: 220px;
-    }
-  }
-  border-right: 6px solid #000;
-  @media (max-width: 759px){
-    min-width: 50%;
-    -webkit-flex: 1 1 50%;
-    -ms-flex: 1 1 50%;
-    flex: 1 1 50%;
     .image {
-      transform: none;
-    }
-  }
-  @include aspect-ratio(4, 3);
-  .section, .rubrik {
-    display: none;
-  }
-  .text-part {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    .title {
-      margin: 0;
-      line-height: 24px;
-      font-size: 28px;
-      @media (max-width: 961px) {
-        font-size: 24px;
-        line-height: 20px;
-      }
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      -webkit-transition: all 0.8s ease-in-out;
+      -moz-transition: all 0.8s ease-in-out;
+      -o-transition: all 0.8s ease-in-out;
+      transition: all 0.8s ease-in-out;
       @media (max-width: 568px) {
-        top: 16px;
-        font-size: 16px;
-        line-height: 16px;
+        transform: scale(2);
+        -webkit-transform: scale(2);
+        transform-origin: top;
+        -webkit-transform-origin: top;
+      }
+    }
+
+    &:hover .image {
+      @media (min-width: 568px) {
+        transform:scale(1.2,1.2);
+        -webkit-transform:scale(1.2,1.2);
       }
     }
   }
-  // TODO This part need to be reviewed
-  &:nth-of-type(#{$firstRedTile}) .image-tint,
-  &:nth-of-type(#{$firstRedTile+1}) .image-tint,
-  &:nth-of-type(#{$firstRedTile+2}) .image-tint,
-  &:nth-of-type(#{$firstRedTile+3}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile+1}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile+2}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile+3}) .image-tint {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(255, 0, 0, 0.3);
+  // Cover
+  .article-reveal-container .article-list .article-reveal-tile:nth-child(1){
+    @include aspect-ratio(16, 9);
+    min-width: 100%;
+    .text-part {
+      bottom: 0;
+      .rubrik {
+        display: block;
+        font-family: Neutra2-Titling;
+        font-size: 48px;
+        line-height: 38px;
+        max-width: initial;
+        @media (max-width: 961px) {
+          max-width: initial;
+          font-size: 32px;
+          line-height: 35px;
+        }
+        @media (max-width: 568px) {
+          font-size: 30px;
+          line-height: 30px;
+        }
+      }
+      .section {
+        display: none;
+      }
+      .title {
+        font-size: 50px;
+        line-height: 44px;
+        font-family: Neutra2-Medium;
+        margin-bottom: 12px;
+        @media (max-width: 961px) {
+          font-size: 35px;
+          line-height: 35px;
+        }
+        @media (max-width: 568px) {
+          font-size: 22px;
+          line-height: 22px;
+          letter-spacing: 0.05px;
+        }
+      }
+    }
   }
-  &:nth-of-type(#{$firstGreenTile}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile+1}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile+2}) .image-tint,
-  &:nth-of-type(#{$firstGreenTile+3}) .image-tint  {
-    background-color: rgba(40, 130, 30, 0.3);
-  }
-}
-
-.article-reveal-tile:nth-child(7){
-  border-right: 0;
-}
-
-.article-reveal-tile:nth-child(13){
-  border-right: 0;
-}
-
-// Animation
-// Start on change class applied to the container
-$transition-duration: 0.5s;
-$transition-delay: 0.2s;
-.article-reveal-tile {
-  -webkit-transition-property: all;
-  -webkit-transition-duration: $transition-duration;
-  -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-delay: $transition-delay;
-  -ms-transition-property: all;
-  -ms-transition-duration: $transition-duration;
-  -ms-transition-timing-function: ease-in-out;
-  -ms-transition-delay: $transition-delay;
-  transition-property: all;
-  transition-duration: $transition-duration;
-  transition-timing-function: ease-in-out;
-  transition-delay: $transition-delay;
-}
-
-// Use this mixing if you want apply a wave effects with a delay
-// $tiles: 15;
-// // Create delay for tiles
-// @for $i from 0 to $tiles {
-//   .article-reveal-tile:nth-child(#{$i}) {
-//     @if ($i <= $firstRedTile) and ($i > ($firstRedTile+3)) {
-//       -webkit-transition-delay:  $transition-delay * $i;
-//     } else {
-//       -webkit-transition-delay:  $transition-delay * $firstRedTile;
-//     }
-//   }
-// }
-
-.landing {
   .article-reveal-tile {
-    transform: translate(0%, 0%)
-  }
-  &.animation-end .article-reveal-container {
-    background: black;
+    @include aspect-ratio(4, 1);
+
+    .image-grad {
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+      background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 60%;
+      height: 100%;
+      opacity: 0.8;
+    }
+    // Sections colors
+    // Green section
+    &:nth-child(8){
+      .section {
+        color: $color-section-politics;
+      }
+    }
+    // Red section
+    &:nth-child(3){
+      .section {
+        color: $color-section-business;
+      }
+    }
+    // Orange section
+    &:nth-child(2){
+      .section {
+        color: $color-section-science;
+      }
+    }
   }
   .article-reveal-tile:nth-of-type(#{$firstRedTile}),
   .article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
@@ -544,46 +376,210 @@ $transition-delay: 0.2s;
   .article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
   .article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
   .article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
-    transform: none;
-    -webkit-transform: none;
-    -ms-transform: none;
+    -webkit-flex: 1 1 25%;
+    -ms-flex: 1 1 25%;
+    flex: 1 1 25%;
+    .no-flexbox & {
+      width: 25%;
+      float: left;
+    }
+    .no-flexbox &:nth-of-type(#{$firstRedTile+3}),
+    .no-flexbox &:nth-of-type(#{$firstGreenTile+3}) {
+      float: none;
+    }
+    @media (max-width: $mainContainerMaxWidth){
+      min-width: 25%;
+    }
+    @media (max-width: 568px) {
+      min-height: initial !important;
+      max-height: 200px;
+    }
+    @media (min-width: $mainContainerMaxWidth - 1px){
+      .article-reveal-tile-link,
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile+2}) {
+          width: $mainContainerMaxWidth/4;
+          max-width: $mainContainerMaxWidth/4;
+          min-width: initial !important;
+          max-height: 220px;
+      }
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile}) .article-reveal-tile-link,
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile}) .article-reveal-tile-link {
+        left: auto !important;
+      }
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile}),
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+          max-width: 100%;
+          min-width: initial !important;
+          max-height: 220px;
+      }
+    }
+    border-right: 6px solid #000;
+    @media (max-width: 759px){
+      min-width: 50%;
+      -webkit-flex: 1 1 50%;
+      -ms-flex: 1 1 50%;
+      flex: 1 1 50%;
+      .image {
+        transform: none;
+      }
+    }
+    @include aspect-ratio(4, 3);
+    .section, .rubrik {
+      display: none;
+    }
+    .text-part {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      .title {
+        margin: 0;
+        line-height: 24px;
+        font-size: 28px;
+        @media (max-width: 961px) {
+          font-size: 24px;
+          line-height: 20px;
+        }
+        @media (max-width: 568px) {
+          top: 16px;
+          font-size: 16px;
+          line-height: 16px;
+        }
+      }
+    }
+    &:nth-of-type(#{$firstRedTile}) .image-tint,
+    &:nth-of-type(#{$firstRedTile+1}) .image-tint,
+    &:nth-of-type(#{$firstRedTile+2}) .image-tint,
+    &:nth-of-type(#{$firstRedTile+3}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile+1}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile+2}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile+3}) .image-tint {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: rgba(255, 0, 0, 0.3);
+    }
+    &:nth-of-type(#{$firstGreenTile}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile+1}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile+2}) .image-tint,
+    &:nth-of-type(#{$firstGreenTile+3}) .image-tint  {
+      background-color: rgba(40, 130, 30, 0.3);
+    }
   }
-}
 
-.article {
+  .article-reveal-tile:nth-child(7){
+    border-right: 0;
+  }
+
+  .article-reveal-tile:nth-child(13){
+    border-right: 0;
+  }
+  // Animation
+  // Start on change class applied to the container
+  $transition-duration: 0.5s;
+  $transition-delay: 0.2s;
   .article-reveal-tile {
-    &:nth-child(odd){
-      transform: translate(-100%, 0%);
-      -webkit-transform: translate(-100%, 0%);
-      -ms-transform: translate(-100%, 0%);
+    -webkit-transition-property: all;
+    -webkit-transition-duration: $transition-duration;
+    -webkit-transition-timing-function: ease-in-out;
+    -webkit-transition-delay: $transition-delay;
+    -ms-transition-property: all;
+    -ms-transition-duration: $transition-duration;
+    -ms-transition-timing-function: ease-in-out;
+    -ms-transition-delay: $transition-delay;
+    transition-property: all;
+    transition-duration: $transition-duration;
+    transition-timing-function: ease-in-out;
+    transition-delay: $transition-delay;
+  }
+  // Use this mixing if you want apply a wave effects with a delay for the tiles
+  // $tiles: 15;
+  // // Create delay for tiles
+  // @for $i from 0 to $tiles {
+  //   .article-reveal-tile:nth-child(#{$i}) {
+  //     @if ($i <= $firstRedTile) and ($i > ($firstRedTile+3)) {
+  //       -webkit-transition-delay:  $transition-delay * $i;
+  //     } else {
+  //       -webkit-transition-delay:  $transition-delay * $firstRedTile;
+  //     }
+  //   }
+  // }
+  &.landing {
+    .article-reveal-tile {
+      transform: translate(0%, 0%)
     }
-    &:nth-child(even){
-      transform: translate(100%, 0%);
-      -webkit-transform: translate(100%, 0%);
-      -ms-transform: translate(100%, 0%);
+    &.animation-end .article-reveal-container {
+      background: black;
+    }
+    .article-reveal-tile:nth-of-type(#{$firstRedTile}),
+    .article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+    .article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+    .article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+      transform: none;
+      -webkit-transform: none;
+      -ms-transform: none;
     }
   }
-  .article-reveal-tile:nth-of-type(#{$firstRedTile}),
-  .article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
-  .article-reveal-tile:nth-of-type(#{$firstGreenTile}),
-  .article-reveal-tile:nth-of-type(#{$firstGreenTile+1}) {
-    transform: translate(-400%, 0%);
-    -webkit-transform: translate(-400%, 0%);
-    -ms-transform: translate(-400%, 0%);
+
+  &.article {
+    .article-reveal-tile {
+      &:nth-child(odd){
+        transform: translate(-100%, 0%);
+        -webkit-transform: translate(-100%, 0%);
+        -ms-transform: translate(-100%, 0%);
+      }
+      &:nth-child(even){
+        transform: translate(100%, 0%);
+        -webkit-transform: translate(100%, 0%);
+        -ms-transform: translate(100%, 0%);
+      }
+    }
+    .article-reveal-tile:nth-of-type(#{$firstRedTile}),
+    .article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile+1}) {
+      transform: translate(-400%, 0%);
+      -webkit-transform: translate(-400%, 0%);
+      -ms-transform: translate(-400%, 0%);
+    }
+    .article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
+    .article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
+    .article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+      transform: translate(400%, 0%);
+      -webkit-transform: translate(400%, 0%);
+      -ms-transform: translate(400%, 0%);
+    }
+    .article-reveal-container {
+      pointer-events: none;
+    }
   }
-  .article-reveal-tile:nth-of-type(#{$firstRedTile+2}),
-  .article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
-  .article-reveal-tile:nth-of-type(#{$firstGreenTile+2}),
-  .article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
-    transform: translate(400%, 0%);
-    -webkit-transform: translate(400%, 0%);
-    -ms-transform: translate(400%, 0%);
-  }
-  .article-reveal-container {
-    pointer-events: none;
+  .article-reveal-tile {
+    &:nth-child(1) {
+      @media  (min-width: $mainContainerMaxWidth){
+        max-height: 600px;
+      }
+    }
+    @media  (min-width: $mainContainerMaxWidth){
+      max-height: 400px;
+    }
   }
 }
 
+
+// Close button part, To be removed when navigation will be ready
 button {
   width: 200px;
   height: 100px;
@@ -615,8 +611,6 @@ button {
   z-index: 9999999999999;
   border: 2px solid rgba(0, 0, 0, 0.6);
   font-size: 30px;
-  /*background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20enco…2C1.1l6.5-6.5l6.5%2C6.5l1-1.1l-6.5-6.5%20L27.7%2C14z%22%2F%3E%3C%2Fsvg%3E');
-  /* background-repeat: no-repeat; */
   width: 40px;
   height: 40px;
   margin-top: -20px;
@@ -626,16 +620,5 @@ button {
 .close-btn:hover {
   cursor: pointer;
   background-color: #fff;
-}
-
-.article-reveal-tile {
-  &:nth-child(1) {
-    @media  (min-width: $mainContainerMaxWidth){
-      max-height: 600px;
-    }
-  }
-  @media  (min-width: $mainContainerMaxWidth){
-      max-height: 400px;
-  }
 }
 
