@@ -2,7 +2,9 @@
 @import '/bower_components/mnv-shared/css/components/preloader/default';
 // Changing default color
 $preloader-overlay-color: #000;
-@import '/bower_components/mnv-shared/css/components/preloader/preloader-bars';
+$preloader-size: 10em;
+$preloader-thick: 1.3em;
+@import '../../../../bower_components/mnv-shared/css/components/preloader/preloader-circle';
 @import '../../../../bower_components/mnv-shared/css/palettes/theworldif-2015';
 
 //$mainContainerMaxWidth: 1190px;
@@ -271,14 +273,14 @@ html, body {
       -o-transition: all 0.8s ease-in-out;
       transition: all 0.8s ease-in-out;
       @media (max-width: 568px) {
-        transform: scale(2);
-        -webkit-transform: scale(2);
+        transform: scale(2.2);
+        -webkit-transform: scale(2.2);
         transform-origin: top;
         -webkit-transform-origin: top;
       }
     }
 
-    &:hover .image {
+    .no-touch &:hover .image {
       @media (min-width: 568px) {
         transform:scale(1.2,1.2);
         -webkit-transform:scale(1.2,1.2);
@@ -387,6 +389,10 @@ html, body {
     .no-flexbox &:nth-of-type(#{$firstGreenTile+3}) {
       float: none;
     }
+    .image {
+      transform: none;
+      -webkit-transform: none;
+    }
     @media (max-width: $mainContainerMaxWidth){
       min-width: 25%;
     }
@@ -418,12 +424,18 @@ html, body {
           max-height: 220px;
       }
     }
-    border-right: 6px solid #000;
+    border-right: 10px solid #000;
     @media (max-width: 759px){
       min-width: 50%;
       -webkit-flex: 1 1 50%;
       -ms-flex: 1 1 50%;
       flex: 1 1 50%;
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile+1}),
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile+1}),
+      &.article-reveal-tile:nth-of-type(#{$firstRedTile+3}),
+      &.article-reveal-tile:nth-of-type(#{$firstGreenTile+3}) {
+        border-right: none;
+      }
       .image {
         transform: none;
       }
@@ -487,15 +499,15 @@ html, body {
   $transition-duration: 0.5s;
   $transition-delay: 0.2s;
   .article-reveal-tile {
-    -webkit-transition-property: all;
+    -webkit-transition-property: transform;
     -webkit-transition-duration: $transition-duration;
     -webkit-transition-timing-function: ease-in-out;
     -webkit-transition-delay: $transition-delay;
-    -ms-transition-property: all;
+    -ms-transition-property: transform;
     -ms-transition-duration: $transition-duration;
     -ms-transition-timing-function: ease-in-out;
     -ms-transition-delay: $transition-delay;
-    transition-property: all;
+    transition-property: transform;
     transition-duration: $transition-duration;
     transition-timing-function: ease-in-out;
     transition-delay: $transition-delay;
