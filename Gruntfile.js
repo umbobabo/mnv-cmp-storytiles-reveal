@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         tasks: ['copy:all','copy:bower']
       },
       sass: {
-        files: ['css/sass/**/*.{scss,sass}',  '../../css/editorial.scss'],
+        files: ['css/sass/**/*.{scss,sass}'],
         tasks: ['sass:dev','copy:all','copy:bower']
       },
       handlebars: {

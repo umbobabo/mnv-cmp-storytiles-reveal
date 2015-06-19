@@ -37,13 +37,20 @@ var template = Handlebars.template, templates = Handlebars.templates = Handlebar
 templates['article'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
-  return "<img src=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.image : stack1), depth0))
-    + "\" />\n"
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.flyTitle : stack1), depth0))
-    + "\n"
+  return "<div class=\"article-container-inner\">\n<!-- <div class=\"grid\"></div> -->\n<div class=\"section group\">\n  <div class=\"span_12 article-image-container\">\n  <div class=\"article-image-container-content\">\n    <div class=\"article-title-container\">\n      <div class=\"article-section margin_1\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.section : stack1), depth0))
+    + "</div>\n      <div class=\"article-title margin_1\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.title : stack1), depth0))
+    + "</div>\n    </div>\n    <img src=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1['image-small'] : stack1), depth0))
+    + "\" srcset=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1['image-large'] : stack1), depth0))
+    + " 1000w, "
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1['image-small'] : stack1), depth0))
+    + " 640w\" class=\"article-image\" /></div>\n  </div>\n</div>\n<div class=\"section group\">\n  <div class=\"span_10 article-rubric margin_1\">"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.rubric : stack1), depth0))
-    + "\n"
-    + ((stack1 = alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.body : stack1), depth0)) != null ? stack1 : "");
+    + "</div>\n</div>\n<div class=\"section group\">\n  <div class=\"span_10 article-body margin_1\">"
+    + ((stack1 = alias1(((stack1 = (depth0 != null ? depth0.article : depth0)) != null ? stack1.body : stack1), depth0)) != null ? stack1 : "")
+    + "</div>\n</div>\n\n<div class=\"section group\">\n  <div class=\"span_12 more-stories-container\">blah\n    <nav class=\"more-stories-nav\">\n      <ul>\n        <li>Politics</li>\n        <li>Business & Finance</li>\n        <li>Science & Technology</li>\n        <li>History</li>\n      </ul>\n    </nav>\n    <div>\n      <ul>\n        <li>01</li>\n        <li>02</li>\n        <li>03</li>\n        <li>04</li>\n      </ul>\n    </div>\n  </div>\n</div>\n</div>";
 },"useData":true});
 }());

@@ -40,7 +40,7 @@ var ecStoryTilesRevealConfig = {
     "grunt-contrib-watch": "^0.6.1",
     "grunt-githooks": "~0.2.0",
     "grunt-handlebars-compiler": "0.0.7",
-    "grunt-sass": "0.6.0",
+    "grunt-sass": "0.14.0",
     "grunt-shell": "~0.5.0",
     "grunt-usemin": "~0.1.12",
     "grunt-criticalcss": "^0.5.0",

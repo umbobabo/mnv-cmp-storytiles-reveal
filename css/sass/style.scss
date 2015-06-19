@@ -1,13 +1,14 @@
 // Preloader settings
-@import '/bower_components/mnv-shared/css/components/preloader/default';
+@import '../../../../bower_components/mnv-shared/css/components/preloader/default';
 // Changing default color
 $preloader-overlay-color: #000;
 $preloader-size: 10em;
 $preloader-thick: 1.3em;
 @import '../../../../bower_components/mnv-shared/css/components/preloader/preloader-circle';
 @import '../../../../bower_components/mnv-shared/css/palettes/theworldif-2015';
+@import 'ratio';
+@import 'article';
 
-//$mainContainerMaxWidth: 1190px;
 $firstRedTile: 4;
 $firstGreenTile: 10;
 
@@ -42,23 +43,6 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-}
-
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
 }
 
 .mnv-ec-storytilesreveal {
@@ -633,4 +617,3 @@ button {
   cursor: pointer;
   background-color: #fff;
 }
-
